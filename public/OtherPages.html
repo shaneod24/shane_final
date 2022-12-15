@@ -1,0 +1,1790 @@
+<html xmlns="http://www.w3.org/1999/html">
+<head>
+    <style>
+
+
+        p a {
+            text-decoration: none;
+            font-weight: bold;
+            color: #666;
+        }
+
+        p a:hover {
+            color: #8c60bd;
+        }
+
+        #loader {
+            display: none;
+            width: 80px;
+            height: 40px;
+            position: relative;
+            top: 50%;
+            left: 50%;
+            margin: 20px -40px;
+            z-index: 1000;
+        }
+
+        .lightsaber {
+            position: absolute;
+            width: 4px;
+            height: 12px;
+            background-color: #666;
+            border-radius: 1px;
+            bottom: 0;
+        }
+
+        .lightsaber.ls-left {
+            left: 0;
+        }
+
+        .lightsaber.ls-right {
+            right: 0;
+        }
+
+        .lightsaber:before {
+            position: absolute;
+            content: ' ';
+            display: block;
+            width: 2px;
+            height: 25px;
+            max-height: 1px;
+            left: 1px;
+            top: 1px;
+            background-color: #fff;
+            border-radius: 1px;
+            -webkit-transform: rotateZ(180deg);
+            transform: rotateZ(180deg);
+            -webkit-transform-origin: center top;
+            -ms-transform-origin: center top;
+            transform-origin: center top;
+        }
+
+        .lightsaber:after {
+            position: absolute;
+            content: ' ';
+            display: block;
+            width: 2px;
+            height: 2px;
+            left: 1px;
+            top: 4px;
+            background-color: #fff;
+            border-radius: 50%;
+        }
+
+        .ls-particles {
+            position: absolute;
+            left: 42px;
+            top: 10px;
+            width: 1px;
+            height: 5px;
+            background-color: rgb(51, 51, 51, 0);
+            -webkit-transform: rotateZ(0deg);
+            transform: rotateZ(0deg);
+        }
+
+
+        .lightsaber.ls-green:before {
+            -webkit-animation: showlightgreen 2s ease-in-out infinite 1s;
+            animation: showlightgreen 2s ease-in-out infinite 1s;
+        }
+
+        .lightsaber.ls-red:before {
+            -webkit-animation: showlightred 2s ease-in-out infinite 1s;
+            animation: showlightred 2s ease-in-out infinite 1s;
+        }
+
+
+        .lightsaber.ls-left {
+            -webkit-animation: fightleft 2s ease-in-out infinite 1s;
+            animation: fightleft 2s ease-in-out infinite 1s;
+        }
+
+        .lightsaber.ls-right {
+            -webkit-animation: fightright 2s ease-in-out infinite 1s;
+            animation: fightright 2s ease-in-out infinite 1s;
+        }
+
+        .ls-particles.ls-part-1 {
+            -webkit-animation: particles1 2s ease-out infinite 1s;
+            animation: particles1 2s ease-out infinite 1s;
+        }
+
+        .ls-particles.ls-part-2 {
+            -webkit-animation: particles2 2s ease-out infinite 1s;
+            animation: particles2 2s ease-out infinite 1s;
+        }
+
+        .ls-particles.ls-part-3 {
+            -webkit-animation: particles3 2s ease-out infinite 1s;
+            animation: particles3 2s ease-out infinite 1s;
+        }
+
+        .ls-particles.ls-part-4 {
+            -webkit-animation: particles4 2s ease-out infinite 1s;
+            animation: particles4 2s ease-out infinite 1s;
+        }
+
+        .ls-particles.ls-part-5 {
+            -webkit-animation: particles5 2s ease-out infinite 1s;
+            animation: particles5 2s ease-out infinite 1s;
+        }
+
+        @-webkit-keyframes showlightgreen {
+            0% {
+                max-height: 0;
+                box-shadow: 0 0 0 0 #8c60bd;
+            }
+
+            5% {
+                box-shadow: 0 0 4px 2px #8c60bd;
+            }
+
+            10% {
+                max-height: 22px;
+            }
+
+            80% {
+                max-height: 22px;
+            }
+
+            85% {
+                box-shadow: 0 0 4px 2px #8c60bd;
+            }
+
+            100% {
+                max-height: 0;
+                box-shadow: 0 0 0 0 #8c60bd;
+            }
+        }
+
+        @-webkit-keyframes showlightred {
+            0% {
+                max-height: 0;
+                box-shadow: 0 0 0 0 #8c60bd;
+            }
+
+            20% {
+                box-shadow: 0 0 4px 2px #8c60bd;
+            }
+
+            25% {
+                max-height: 22px;
+            }
+
+            80% {
+                max-height: 22px;
+            }
+
+            85% {
+                box-shadow: 0 0 4px 2px #8c60bd;
+            }
+
+            100% {
+                max-height: 0;
+                box-shadow: 0 0 0 0 #8c60bd;
+            }
+        }
+
+        @-webkit-keyframes fightleft {
+            0% {
+                -webkit-transform: rotateZ(0deg);
+                transform: rotateZ(0deg);
+                left: 0;
+                bottom: 0;
+            }
+
+            30% {
+                -webkit-transform: rotateZ(0deg);
+                transform: rotateZ(0deg);
+                bottom: 0;
+            }
+
+            40% {
+                -webkit-transform: rotateZ(45deg);
+                transform: rotateZ(45deg);
+                left: 0;
+                bottom: 2px;
+            }
+
+            45% {
+                -webkit-transform: rotateZ(65deg);
+                transform: rotateZ(65deg);
+                left: 0;
+            }
+
+            65% {
+                -webkit-transform: rotateZ(410deg);
+                transform: rotateZ(410deg);
+                left: 30px;
+                bottom: 10px;
+            }
+
+            95% {
+                -webkit-transform: rotateZ(410deg);
+                transform: rotateZ(410deg);
+                left: 0;
+                bottom: 0;
+            }
+
+            100% {
+                -webkit-transform: rotateZ(360deg);
+                transform: rotateZ(360deg);
+                left: 0;
+                bottom: 0;
+            }
+        }
+
+        @-webkit-keyframes fightright {
+            0% {
+                -webkit-transform: rotateZ(0deg);
+                transform: rotateZ(0deg);
+                right: 0;
+                bottom: 0;
+            }
+
+            30% {
+                -webkit-transform: rotateZ(0deg);
+                transform: rotateZ(0deg);
+                bottom: 0;
+            }
+
+            45% {
+                -webkit-transform: rotateZ(-45deg);
+                transform: rotateZ(-45deg);
+                right: 0;
+                bottom: 2px;
+            }
+
+            50% {
+                -webkit-transform: rotateZ(-65deg);
+                transform: rotateZ(-65deg);
+                right: 0;
+            }
+
+            68% {
+                -webkit-transform: rotateZ(-410deg);
+                transform: rotateZ(-410deg);
+                right: 27px;
+                bottom: 13px;
+            }
+
+            95% {
+                -webkit-transform: rotateZ(-410deg);
+                transform: rotateZ(-410deg);
+                right: 0;
+                bottom: 0;
+            }
+
+            100% {
+                -webkit-transform: rotateZ(-360deg);
+                transform: rotateZ(-360deg);
+                right: 0;
+                bottom: 0;
+            }
+        }
+
+        @-webkit-keyframes particles1 {
+            0% {
+                background-color: rgba(51, 51, 51, 0);
+                -webkit-transform: rotateZ(35deg) translateY(0px);
+                transform: rotateZ(35deg) translateY(0px);
+            }
+
+            63% {
+                background-color: rgba(51, 51, 51, 0);
+                -webkit-transform: rotateZ(35deg) translateY(0px);
+                transform: rotateZ(35deg) translateY(0px);
+            }
+
+            64% {
+                background-color: rgba(51, 51, 51, 1);
+                -webkit-transform: rotateZ(35deg) translateY(0px);
+                transform: rotateZ(35deg) translateY(0px);
+            }
+
+            100% {
+                background-color: rgba(51, 51, 51, 0);
+                -webkit-transform: rotateZ(35deg) translateY(-30px);
+                transform: rotateZ(35deg) translateY(-30px);
+            }
+        }
+
+        @-webkit-keyframes particles2 {
+            0% {
+                background-color: rgba(51, 51, 51, 0);
+                -webkit-transform: rotateZ(-65deg) translateY(0px);
+                transform: rotateZ(-65deg) translateY(0px);
+            }
+
+            63% {
+                background-color: rgba(51, 51, 51, 0);
+                -webkit-transform: rotateZ(-65deg) translateY(0px);
+                transform: rotateZ(-65deg) translateY(0px);
+            }
+
+            64% {
+                background-color: rgba(51, 51, 51, 1);
+                -webkit-transform: rotateZ(-65deg) translateY(0px);
+                transform: rotateZ(-65deg) translateY(0px);
+            }
+
+            95% {
+                background-color: rgba(51, 51, 51, 0);
+                -webkit-transform: rotateZ(-65deg) translateY(-40px);
+                transform: rotateZ(-65deg) translateY(-40px);
+            }
+
+            100% {
+                background-color: rgba(51, 51, 51, 0);
+                -webkit-transform: rotateZ(-65deg) translateY(-40px);
+                transform: rotateZ(-65deg) translateY(-40px);
+            }
+        }
+
+        @-webkit-keyframes particles3 {
+            0% {
+                background-color: rgba(51, 51, 51, 0);
+                -webkit-transform: rotateZ(-75deg) translateY(0px);
+                transform: rotateZ(-75deg) translateY(0px);
+            }
+
+            63% {
+                background-color: rgba(51, 51, 51, 0);
+                -webkit-transform: rotateZ(-75deg) translateY(0px);
+                transform: rotateZ(-75deg) translateY(0px);
+            }
+
+            64% {
+                background-color: rgba(51, 51, 51, 1);
+                -webkit-transform: rotateZ(-75deg) translateY(0px);
+                transform: rotateZ(-75deg) translateY(0px);
+            }
+
+            97% {
+                background-color: rgba(51, 51, 51, 0);
+                -webkit-transform: rotateZ(-75deg) translateY(-35px);
+                transform: rotateZ(-75deg) translateY(-35px);
+            }
+
+            100% {
+                background-color: rgba(51, 51, 51, 0);
+                -webkit-transform: rotateZ(-75deg) translateY(-35px);
+                transform: rotateZ(-75deg) translateY(-35px);
+            }
+        }
+
+        @-webkit-keyframes particles4 {
+            0% {
+                background-color: rgba(51, 51, 51, 0);
+                -webkit-transform: rotateZ(-25deg) translateY(0px);
+                transform: rotateZ(-25deg) translateY(0px);
+            }
+
+            63% {
+                background-color: rgba(51, 51, 51, 0);
+                -webkit-transform: rotateZ(-25deg) translateY(0px);
+                transform: rotateZ(-25deg) translateY(0px);
+            }
+
+            64% {
+                background-color: rgba(51, 51, 51, 1);
+                -webkit-transform: rotateZ(-25deg) translateY(0px);
+                transform: rotateZ(-25deg) translateY(0px);
+            }
+
+            97% {
+                background-color: rgba(51, 51, 51, 0);
+                -webkit-transform: rotateZ(-25deg) translateY(-30px);
+                transform: rotateZ(-25deg) translateY(-30px);
+            }
+
+            100% {
+                background-color: rgba(51, 51, 51, 0);
+                -webkit-transform: rotateZ(-25deg) translateY(-30px);
+                transform: rotateZ(-25deg) translateY(-30px);
+            }
+        }
+
+        @-webkit-keyframes particles5 {
+            0% {
+                background-color: rgba(51, 51, 51, 0);
+                -webkit-transform: rotateZ(65deg) translateY(0px);
+                transform: rotateZ(65deg) translateY(0px);
+            }
+
+            63% {
+                background-color: rgba(51, 51, 51, 0);
+                -webkit-transform: rotateZ(65deg) translateY(0px);
+                transform: rotateZ(65deg) translateY(0px);
+            }
+
+            64% {
+                background-color: rgba(51, 51, 51, 1);
+                -webkit-transform: rotateZ(65deg) translateY(0px);
+                transform: rotateZ(65deg) translateY(0px);
+            }
+
+            97% {
+                background-color: rgba(51, 51, 51, 0);
+                -webkit-transform: rotateZ(65deg) translateY(-35px);
+                transform: rotateZ(65deg) translateY(-35px);
+            }
+
+            100% {
+                background-color: rgba(51, 51, 51, 0);
+                -webkit-transform: rotateZ(65deg) translateY(-35px);
+                transform: rotateZ(65deg) translateY(-35px);
+            }
+        }
+
+        @keyframes showlightgreen {
+            0% {
+                max-height: 0;
+                box-shadow: 0 0 0 0 #8c60bd;
+            }
+
+            5% {
+                box-shadow: 0 0 4px 2px #8c60bd;
+            }
+
+            10% {
+                max-height: 22px;
+            }
+
+            80% {
+                max-height: 22px;
+            }
+
+            85% {
+                box-shadow: 0 0 4px 2px #8c60bd;
+            }
+
+            100% {
+                max-height: 0;
+                box-shadow: 0 0 0 0 #8c60bd;
+            }
+        }
+
+        @keyframes showlightred {
+            0% {
+                max-height: 0;
+                box-shadow: 0 0 0 0 #8c60bd;
+            }
+
+            20% {
+                box-shadow: 0 0 4px 2px #8c60bd;
+            }
+
+            25% {
+                max-height: 22px;
+            }
+
+            80% {
+                max-height: 22px;
+            }
+
+            85% {
+                box-shadow: 0 0 4px 2px #8c60bd;
+            }
+
+            100% {
+                max-height: 0;
+                box-shadow: 0 0 0 0 #8c60bd;
+            }
+        }
+
+        @keyframes fightleft {
+            0% {
+                -webkit-transform: rotateZ(0deg);
+                transform: rotateZ(0deg);
+                left: 0;
+                bottom: 0;
+            }
+
+            30% {
+                -webkit-transform: rotateZ(0deg);
+                transform: rotateZ(0deg);
+                bottom: 0;
+            }
+
+            40% {
+                -webkit-transform: rotateZ(45deg);
+                transform: rotateZ(45deg);
+                left: 0;
+                bottom: 2px;
+            }
+
+            45% {
+                -webkit-transform: rotateZ(65deg);
+                transform: rotateZ(65deg);
+                left: 0;
+            }
+
+            65% {
+                -webkit-transform: rotateZ(410deg);
+                transform: rotateZ(410deg);
+                left: 30px;
+                bottom: 10px;
+            }
+
+            95% {
+                -webkit-transform: rotateZ(410deg);
+                transform: rotateZ(410deg);
+                left: 0;
+                bottom: 0;
+            }
+
+            100% {
+                -webkit-transform: rotateZ(360deg);
+                transform: rotateZ(360deg);
+                left: 0;
+                bottom: 0;
+            }
+        }
+
+        @keyframes fightright {
+            0% {
+                -webkit-transform: rotateZ(0deg);
+                transform: rotateZ(0deg);
+                right: 0;
+                bottom: 0;
+            }
+
+            30% {
+                -webkit-transform: rotateZ(0deg);
+                transform: rotateZ(0deg);
+                bottom: 0;
+            }
+
+            45% {
+                -webkit-transform: rotateZ(-45deg);
+                transform: rotateZ(-45deg);
+                right: 0;
+                bottom: 2px;
+            }
+
+            50% {
+                -webkit-transform: rotateZ(-65deg);
+                transform: rotateZ(-65deg);
+                right: 0;
+            }
+
+            68% {
+                -webkit-transform: rotateZ(-410deg);
+                transform: rotateZ(-410deg);
+                right: 27px;
+                bottom: 13px;
+            }
+
+            95% {
+                -webkit-transform: rotateZ(-410deg);
+                transform: rotateZ(-410deg);
+                right: 0;
+                bottom: 0;
+            }
+
+            100% {
+                -webkit-transform: rotateZ(-360deg);
+                transform: rotateZ(-360deg);
+                right: 0;
+                bottom: 0;
+            }
+        }
+
+        @keyframes particles1 {
+            0% {
+                background-color: rgba(51, 51, 51, 0);
+                -webkit-transform: rotateZ(35deg) translateY(0px);
+                transform: rotateZ(35deg) translateY(0px);
+            }
+
+            63% {
+                background-color: rgba(51, 51, 51, 0);
+                -webkit-transform: rotateZ(35deg) translateY(0px);
+                transform: rotateZ(35deg) translateY(0px);
+            }
+
+            64% {
+                background-color: rgba(51, 51, 51, 1);
+                -webkit-transform: rotateZ(35deg) translateY(0px);
+                transform: rotateZ(35deg) translateY(0px);
+            }
+
+            100% {
+                background-color: rgba(51, 51, 51, 0);
+                -webkit-transform: rotateZ(35deg) translateY(-30px);
+                transform: rotateZ(35deg) translateY(-30px);
+            }
+        }
+
+        @keyframes particles2 {
+            0% {
+                background-color: rgba(51, 51, 51, 0);
+                -webkit-transform: rotateZ(-65deg) translateY(0px);
+                transform: rotateZ(-65deg) translateY(0px);
+            }
+
+            63% {
+                background-color: rgba(51, 51, 51, 0);
+                -webkit-transform: rotateZ(-65deg) translateY(0px);
+                transform: rotateZ(-65deg) translateY(0px);
+            }
+
+            64% {
+                background-color: rgba(51, 51, 51, 1);
+                -webkit-transform: rotateZ(-65deg) translateY(0px);
+                transform: rotateZ(-65deg) translateY(0px);
+            }
+
+            95% {
+                background-color: rgba(51, 51, 51, 0);
+                -webkit-transform: rotateZ(-65deg) translateY(-40px);
+                transform: rotateZ(-65deg) translateY(-40px);
+            }
+
+            100% {
+                background-color: rgba(51, 51, 51, 0);
+                -webkit-transform: rotateZ(-65deg) translateY(-40px);
+                transform: rotateZ(-65deg) translateY(-40px);
+            }
+        }
+
+        @keyframes particles3 {
+            0% {
+                background-color: rgba(51, 51, 51, 0);
+                -webkit-transform: rotateZ(-75deg) translateY(0px);
+                transform: rotateZ(-75deg) translateY(0px);
+            }
+
+            63% {
+                background-color: rgba(51, 51, 51, 0);
+                -webkit-transform: rotateZ(-75deg) translateY(0px);
+                transform: rotateZ(-75deg) translateY(0px);
+            }
+
+            64% {
+                background-color: rgba(51, 51, 51, 1);
+                -webkit-transform: rotateZ(-75deg) translateY(0px);
+                transform: rotateZ(-75deg) translateY(0px);
+            }
+
+            97% {
+                background-color: rgba(51, 51, 51, 0);
+                -webkit-transform: rotateZ(-75deg) translateY(-35px);
+                transform: rotateZ(-75deg) translateY(-35px);
+            }
+
+            100% {
+                background-color: rgba(51, 51, 51, 0);
+                -webkit-transform: rotateZ(-75deg) translateY(-35px);
+                transform: rotateZ(-75deg) translateY(-35px);
+            }
+        }
+
+        @keyframes particles4 {
+            0% {
+                background-color: rgba(51, 51, 51, 0);
+                -webkit-transform: rotateZ(-25deg) translateY(0px);
+                transform: rotateZ(-25deg) translateY(0px);
+            }
+
+            63% {
+                background-color: rgba(51, 51, 51, 0);
+                -webkit-transform: rotateZ(-25deg) translateY(0px);
+                transform: rotateZ(-25deg) translateY(0px);
+            }
+
+            64% {
+                background-color: rgba(51, 51, 51, 1);
+                -webkit-transform: rotateZ(-25deg) translateY(0px);
+                transform: rotateZ(-25deg) translateY(0px);
+            }
+
+            97% {
+                background-color: rgba(51, 51, 51, 0);
+                -webkit-transform: rotateZ(-25deg) translateY(-30px);
+                transform: rotateZ(-25deg) translateY(-30px);
+            }
+
+            100% {
+                background-color: rgba(51, 51, 51, 0);
+                -webkit-transform: rotateZ(-25deg) translateY(-30px);
+                transform: rotateZ(-25deg) translateY(-30px);
+            }
+        }
+
+        @keyframes particles5 {
+            0% {
+                background-color: rgba(51, 51, 51, 0);
+                -webkit-transform: rotateZ(65deg) translateY(0px);
+                transform: rotateZ(65deg) translateY(0px);
+            }
+
+            63% {
+                background-color: rgba(51, 51, 51, 0);
+                -webkit-transform: rotateZ(65deg) translateY(0px);
+                transform: rotateZ(65deg) translateY(0px);
+            }
+
+            64% {
+                background-color: rgba(51, 51, 51, 1);
+                -webkit-transform: rotateZ(65deg) translateY(0px);
+                transform: rotateZ(65deg) translateY(0px);
+            }
+
+            97% {
+                background-color: rgba(51, 51, 51, 0);
+                -webkit-transform: rotateZ(65deg) translateY(-35px);
+                transform: rotateZ(65deg) translateY(-35px);
+            }
+
+            100% {
+                background-color: rgba(51, 51, 51, 0);
+                -webkit-transform: rotateZ(65deg) translateY(-35px);
+                transform: rotateZ(65deg) translateY(-35px);
+            }
+        }
+    </style>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <!-- Basic -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Site Metas -->
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Etsy Seller Tools by OD.io</title>
+
+    <!-- slider stylesheet -->
+    <link rel="stylesheet" type="text/css" href="FinalReport_files/owl.carousel.min.css">
+
+    <!-- bootstrap core css -->
+    <link rel="stylesheet" type="text/css" href="FinalReport_files/bootstrap.css">
+
+    <!-- fonts style -->
+    <link href="FinalReport_files/css.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="FinalReport_files/style.css" rel="stylesheet">
+    <!-- responsive style -->
+    <link href="FinalReport_files/responsive.css" rel="stylesheet">
+    <script src="FinalReport_files/prompt_002_002.js"></script>
+    <script src="FinalReport_files/prompt_002_002.js"></script>
+    <script src="FinalReport_files/prompt_002_002.js"></script>
+    <script src="FinalReport_files/prompt_002_002.js"></script>
+    <script src="FinalReport_files/prompt_002_002.js"></script>
+    <script src="FinalReport_files/prompt_002_002.js"></script>
+    <script src="FinalReport_files/prompt_002_002.js"></script>
+    <script src="FinalReport_files/prompt_002_003_002.js"></script>
+    <script src="FinalReport_files/prompt_002_003_002.js"></script>
+    <script src="FinalReport_files/prompt_002_003_002.js"></script>
+    <script src="FinalReport_files/prompt_002_003_002.js"></script>
+    <script src="FinalReport_files/jquery.min.js"></script>
+    <script src="FinalReport_files/keywordcrawler.js" type="text/javascript"></script>
+    <script src="FinalReport_files/shopID.js" type="text/javascript"></script>
+    <script src="FinalReport_files/prompt_002_003_002.js"></script>
+    <script src="FinalReport_files/prompt_002_004_002.js"></script>
+    <script src="FinalReport_files/prompt_002_004_003.js"></script>
+    <script src="FinalReport_files/prompt_002_004_004.js"></script>
+    <script src="FinalReport_files/prompt_002_004_005_002.js"></script>
+    <script src="FinalReport_files/prompt_002_004_005.js"></script>
+    <script src="FinalReport_files/prompt_002_004.js"></script>
+    <script src="FinalReport_files/prompt_002_005.js"></script>
+    <script src="FinalReport_files/prompt_002_003_003.js"></script>
+    <script src="FinalReport_files/prompt_003_002.js"></script>
+    <script src="FinalReport_files/prompt_003_003.js"></script>
+    <script src="FinalReport_files/prompt_002_003_004.js"></script>
+    <script src="FinalReport_files/prompt_002_003_005.js"></script>
+    <script src="FinalReport_files/prompt_002_006.js"></script>
+    <script src="FinalReport_files/prompt_002_003.js"></script>
+    <script src="FinalReport_files/prompt_002_007.js"></script>
+    <script src="FinalReport_files/prompt_004.js"></script>
+    <script src="FinalReport_files/prompt_005.js"></script>
+    <script src="FinalReport_files/prompt_006.js"></script>
+    <script src="FinalReport_files/prompt_007.js"></script>
+    <script src="FinalReport_files/prompt_002.js"></script>
+    <script src="FinalReport_files/prompt_003.js"></script>
+    <script src="FinalReport_files/prompt_008_002.js"></script>
+    <script src="FinalReport_files/prompt_008.js"></script>
+    <script src="FinalReport_files/prompt.js"></script>
+</head>
+
+<body>
+
+<script type="text/javascript">
+
+    // getListingInfo().then(result => {
+    //     alert(result); // {"metadata": "for: test.png"}
+    // });
+
+
+</script>
+
+
+<div class="hero_area" style="height: auto;">
+    <!-- header section strats -->
+    <header class="header_section" id="headerTop" style="margin-bottom:0px">
+        <script>
+            if (window.navigator.userAgent.indexOf('iPhone') != -1) {
+                document.getElementById("headerTop").style.marginBottom = "30%";
+            }
+        </script>
+        <div class="container-fluid">
+            <nav class="navbar navbar-expand-lg custom_nav-container">
+                <a class="navbar-brand" href="http://localhost:3000/index.html">
+                    <span>Etsy Seller Tools</span>
+                </a>
+
+                <div class="navbar-collapse" id="">
+                    <div class="custom_menu-btn">
+                        <button onclick="openNav()">
+                            <span class="s-1"> </span>
+                            <span class="s-2"> </span>
+                            <span class="s-3"> </span>
+                        </button>
+                    </div>
+                    <div id="myNav" class="overlay">
+                        <div class="overlay-content">
+                            <a href="/index.html">Home</a><a href="/PrototypePage.html">Prototype Page</a><a
+                                href="/FinalReport.html">Final Report Page</a>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <!-- end header section -->
+    <!-- slider section -->
+
+
+    <!-- end slider section -->
+</div><!-- feature section -->
+<section class="feature_section layout_padding2 layout_margin">
+    <div class="container">
+        <div class="heading_container">
+            <h2 class="titleWidget">Final Report<br></h2>
+            <div>
+                <p>Shane ODonnell</p>
+
+                <p>Professor (Dr.) Carroll</p>
+
+                <p>IST 402</p>
+
+                <p>14 December 2022</p>
+                <br>
+            </div>
+        </div>
+        <div class="section-writing-container"><h4 class="titleWidget">Problem Domain and Root Concept<br></h4>
+            <p style="text-align: left;margin-top: 10px;margin-bottom: 10px;">In
+                the past year or so I have become increasingly interested in back end
+                authorization and web scraping overall. Essentially, the delivery of
+                viable data to the front-end user which would enable the user to make
+                educated decisions on whatever subject matter there is at hand. For
+                back-end authorization, I became interested in APIs with OAuth 2.0, as I
+                was able to understand the general back-end flow, and many of the
+                services that offer APIs use OAuth 2.0. For this project, I wanted to
+                identify a problem that I would be able to fulfill (or at least aid in
+                solving) for a wide array of users. </p>
+            <div>
+                <img style="max-width: 50%;margin: auto;display: block;" src="FinalReport_files/apiref.png">
+                <p style="margin: auto;text-align: center;width: 50%;margin-bottom: 10px;margin-top: 10px;">
+                    (Etsy API Reference)
+
+                </p></div>
+            <p style="text-align: left;margin-top: 10px;margin-bottom: 10px;">When
+                looking at APIs, I came across the Etsy API which as a multitude of
+                functions that allow sellers to manipulate their storefronts and data.
+                The question I had was: is there enough sellers to really make something
+                worthwhile? It turns out that Etsy has a very large user base and there
+                are millions of sellers on this platform. Therefore, I wanted to take
+                the seller perspective and see what I had to offer this group of
+                stakeholders which is really a proxy to buyers and the company overall.
+                The overall concept of my system (in a broad sense) would be to provide a
+                viable solution in order to help Etsy sellers increase their overall
+                sales.</p>
+            <p style="text-align: left;margin-top: 10px;margin-bottom: 10px;">When
+                looking at how to do this, I stumbled across some forums that had
+                questions revolving around the importance of listing elements known as
+                “tags”. It turns out that tags are keywords that sellers are able to
+                feed the Etsy search algorithm in order to help it place listings when a
+                customer searches. Although these are not the end all be all in terms
+                of listing views and sales, I concluded that finding the best and most
+                relevant tags for a given keyword would be best.</p>
+            <p style="text-align: left;margin-top: 10px;margin-bottom: 10px;">The
+                root concept was to take user input for a given keyword and have the
+                system go find the very best tags that match the keyword. Therefore, the
+                user would have the best chance at placing their listing at the top of
+                the results when a potential buyer searched that keyword. This would
+                address the overarching problem of increasing sales and cover the
+                sub-problems of how to get more views as well as how to get the best
+                tags. </p></div>
+        <div class="section-writing-container"><h4 class="titleWidget">Requirements Analysis<br></h4>
+            <p style="text-align: left;margin-top: 10px;margin-bottom: 10px;">The
+                first major part of my requirements analysis and field studies were the
+                overall functionality of the back end. This is a crucial part to the
+                entirety of the system since there is minimal effort or reliance on the
+                front end. First, I had to determine how to authorize the server to pull
+                data from other listings and see what data was available through the
+                API. After consulting the Etsy API documentation, I found a few key
+                results that would go on to really shape my system. First, I was able to
+                find that the Etsy API has various objects. The main object that I was
+                focused on was the listing object, which turned out to have an array
+                element that housed tags and a function to pull listings by keyword. </p>
+            <div>
+                <img style="max-width: 50%;margin: auto;display: block;" src="FinalReport_files/tags.png">
+                <p style="margin: auto;text-align: center;width: 50%;margin-bottom: 10px;margin-top: 10px;">
+                    (Etsy API Reference Tags)
+
+                </p></div>
+            <div>
+                <img style="max-width: 50%;margin: auto;display: block;" src="FinalReport_files/findListings.png">
+                <p style="margin: auto;text-align: center;width: 50%;margin-bottom: 10px;margin-top: 10px;">
+                    (Etsy API Reference Pull Listings By Keyword)
+
+                </p></div>
+            <p style="text-align: left;margin-top: 10px;margin-bottom: 10px;">At
+                this point, I had discovered a major part of my system’s intended
+                functionality. I would be able to take a keyword from the user and
+                return arrays of keywords that matched the top listings. However, I next
+                discovered Etsy’s rate limits. </p>
+            <div>
+                <img style="max-width: 50%;margin: auto;display: block;" src="FinalReport_files/rates.png">
+                <p style="margin: auto;text-align: center;width: 50%;margin-bottom: 10px;margin-top: 10px;">
+                    (Etsy API Rate Limits)
+
+                </p></div>
+            <p style="text-align: left;margin-top: 10px;margin-bottom: 10px;">It
+                turned out that Etsy offered 10,000 public API calls per user per day.
+                Therefore, I could only make 10,000 keyword calls per day. I had to make
+                the decision whether or not I would be able to handle this with just my
+                own account, or if I would have to authenticate users and use their
+                pulls. There were various issues on both sides with the former being
+                whether or not I would run out of pulls in a given day. The ladder
+                rested on the fact that there could be privacy concerns with users
+                needing to login and give me access to make requests on their behalf. I
+                chose to use my own account because Etsy allows a developer to make more
+                pulls upon request. I ultimately concluded that if my system were doing
+                more than 10,000 pulls per day, then I could easily make that request.</p>
+            <p style="text-align: left;margin-top: 10px;margin-bottom: 10px;">The
+                next major part of the exploration was how to authorize myself with and
+                obtain a persistent token. As I previously mentioned, I understood how
+                to authorize with OAuth 2.0 (which Etsy uses), but implementations are
+                based on the developer, with the protocol being more of a base. The flow
+                of OAuth 2.0 can be seen below.</p>
+            <div>
+                <img style="max-width: 50%;margin: auto;display: block;"
+                     src="FinalReport_files/everything-you-need-to-know-about-oauth-2.27a4f189_480x480.webp">
+                <p style="margin: auto;text-align: center;width: 50%;margin-bottom: 10px;margin-top: 10px;">
+                    (OAuth 2.0 Flow)
+
+                </p></div>
+            <p style="text-align: left;margin-top: 10px;margin-bottom: 10px;">Once
+                I was able to get permanent credentials, I would be able to make
+                authorized requests when prompted by a user, and return them in a viable
+                format so that the user could perceive, interpret, and make sense of
+                what was in front of them (gulf of evaluation) and then go on to the gul
+                of execution. After experimenting with the API, I was able to produce
+                the result that I hoped to receive from the server in a test environment
+                that could be easily changed over to production. At this point, it was
+                time to start designing the UI and determining how to form the UX.</p>
+            <div>
+                <img style="max-width: 50%;margin: auto;display: block;"
+                     src="FinalReport_files/Screenshot_2022-09-19_211909_480x480.avif">
+                <p style="margin: auto;text-align: center;width: 50%;margin-bottom: 10px;margin-top: 10px;">
+                    (Initial Request)
+
+                </p></div>
+        </div>
+        <div class="section-writing-container"><h4 class="titleWidget">User Interface Design<br></h4>
+            <p style="text-align: left;margin-top: 10px;margin-bottom: 10px;"></p>In
+            order to design my user interface, I used a number of key concepts from
+            Scenario Based Design (SBD) in order to take the user and broader
+            stakeholder groups into account. I first started by using Hierarchical
+            Task Analysis (HTA) in order to decompose the various tasks that the
+            user had to go through in order to achieve the goal of obtaining the
+            keywords. My breakdown is represented as follows.
+            <div>
+                <img style="max-width: 50%;margin: auto;display: block;" src="FinalReport_files/chart.png">
+                <p style="margin: auto;text-align: center;width: 50%;margin-bottom: 10px;margin-top: 10px;">
+                    (HTA)
+
+                </p></div>
+            <p style="text-align: left;margin-top: 10px;margin-bottom: 10px;">This
+                diagram helped me to map out the user flow of my intended system so
+                that I could use it as a guide for eventual implementation. This is what
+                I used to spur ideas, but I used other SBD principles and concepts in
+                order to facilitate further planning. The second method I used was
+                evaluating based on the principles within information design. This would
+                help me to design and arrange the visual aspects of my UX(UI). This
+                involved the gulf of evaluation given that I would need to hit all the
+                points of perception, interpretation, and making sense. More
+                specifically, I would have to make sure that the user is able to
+                understand the base structure of my application with structures like
+                lines, shading, and more (perception). I would also have to make sure
+                that users would understand what the structures meant. For example, they
+                would need to know that the search bar is used to search the keyword
+                (interpretation). Finally, I would need to make sure that the output
+                made sense in terms of the linkage between the input and output (keyword
+                in, tags out, making sense).</p>
+            <div>
+                <img style="max-width: 50%;margin: auto;display: block;" src="FinalReport_files/demo1.png">
+                <p style="margin: auto;text-align: center;width: 50%;margin-bottom: 10px;margin-top: 10px;">
+                    (Prototype)
+
+                </p></div>
+            <p style="text-align: left;margin-top: 10px;margin-bottom: 10px;">The
+                final prototype uses numerous gestalt principles including closure,
+                similarity, and area to help with perception. For example, the search
+                bar (which has common understanding as a virtual metaphor), uses the
+                principle of area. It is clear that the explicit border structure is
+                used to emphasize the inside of the bar to prompt the user to enter
+                information. Each of the three results uses more explicit structure to
+                emphasize individuality while not over complicating the UI by using
+                similarity across all three of the elements. This was the result of
+                multiple prototypes and design critiques from test subjects.</p>
+            <p style="text-align: left;margin-top: 10px;margin-bottom: 10px;">Activity
+                design is a major component of SBD, and I used it to my advantage to
+                help me build my UI and design my UX overall. I was able to create
+                actors such as an average user and a prospective user to help guide my
+                building of the UX. The most apparent example of this is the demo button
+                at the top of the page. Rather than explaining exactly how to do
+                everything in a overbearing documentation set, hitting the button shows
+                the quick demo. The system is rather simple, but I believe it does a
+                good job converting novice users to more seasoned users. I was able to
+                do this by using think out loud methods with test subjects and
+                brainstorming ideas with key stakeholders. Overall, activity design
+                scenarios and other elements drove a majority of my UI design.</p></div>
+        <div class="section-writing-container"><h4 class="titleWidget">Evaluation and Redesign<br></h4>
+            <p style="text-align: left;margin-top: 10px;margin-bottom: 10px;"></p>Given
+            that there were no major example systems that I based my design off,
+            evaluation and redesign of my system was very important. I was very
+            lucky that I was able to get a lot of feedback from users, as well as
+            anticipate what a user may or may not need or want from this system.
+            Although it is a pretty simple concept, a lot went into it. For that
+            reason, I spent a majority of my time performing formative evaluations.
+            This is yet another major aspect to SBD that guides the developer in
+            reformation of functionality, UI, and overall plot changes. By
+            evaluating current problem and activity scenarios, I was able to spur
+            ideas for new ones. For example, I initially looked at the issue of the
+            user being unable to understand where the data came from, and therefore
+            the system would likely seem less viable. I analyzed this problem
+            scenario and formed an activity scenario with the common metaphor of a
+            citation. People understand citations, which gives literature
+            credibility. Especially in the modern world, people rarely tend to take
+            things at face value. Therefore, I chose to “sight” my data sources with
+            images and links to the listings that were analyzed.
+            <div>
+                <img style="max-width: 50%;margin: auto;display: block;" src="FinalReport_files/ferrari-shirt.png">
+                <p style="margin: auto;text-align: center;width: 50%;margin-bottom: 10px;margin-top: 10px;">
+                    (Cited Output)
+
+                </p></div>
+            <p style="text-align: left;margin-top: 10px;margin-bottom: 10px;">I
+                had three phases of prototyping that fell in order of fidelity. The
+                first that I created was a non-GUI version of the system that did not
+                have real back-end function. The goal for this was to spur ideas and to
+                get a quick and dirty prototype in front of real users. This would allow
+                me to get their feedback as well as understand what users are looking
+                for in a system. The results that I got from this stage were very
+                helpful. I was able to see that user understanding of input is crucial
+                in terms of where to input and what functions they need to do in order
+                to get a result. The SBD concept that applied most here was the fact
+                that users are motivated to produce results, not to understand a system.
+                Therefore, I made sure that input was a lot simpler in the second
+                prototype.</p>
+            <div>
+                <img style="max-width: 50%;margin: auto;display: block;" src="FinalReport_files/input2.png">
+                <p style="margin: auto;text-align: center;width: 50%;margin-bottom: 10px;margin-top: 10px;">
+                    (Prototype 2 Search Bar)
+
+                </p></div>
+            <p style="text-align: left;margin-top: 10px;margin-bottom: 10px;">I
+                continued my empirical evaluation in the second prototype as well. This
+                system was a lot more functional with actual back-end function. It was
+                easier for the user to understand with inputs, but it did come with its
+                issues as well. The second prototype helped me to better understand my
+                users with a second group and demographic survey. I was able to
+                determine that my average pool of users would likely have some computer
+                knowledge given that they were savvy enough to open an online store. I
+                made the generalization that motivated entrepreneurs generally have some
+                sort of technological proficiency. Additionally, I was also met with
+                some UI and back-end issues that were prompted by the “think-out-loud”
+                form of evaluation. Almost every user in the second test wondered where
+                the data was coming from and what exactly they should put into the
+                search bar that was labeled “search”. This also showed me that users are
+                more motivated by results given that I provided a prompt at the top to
+                put a keyword in. From this, I determined that I would cite my sources
+                by giving links to analyzed listings and I would have the system give a
+                simple demo to start the user on the right track.</p>
+            <p style="text-align: left;margin-top: 10px;margin-bottom: 10px;">The
+                final part of the evaluation that I used was summative. Summative is an
+                SBD evaluation form that involves evaluating if the system performs its
+                overall function. Although this is usually part of the final
+                evaluation, I used it intermittently to determine if more micro level
+                functions were up to par. For this, I mainly evaluated speed and
+                understandability of the design. In terms of speed, I initially had the
+                front-end make most of the server calls. However, I found that the
+                back-end was far more powerful which would enhance the user experience
+                given that results would certainly be at the forefront. Additionally, I
+                reformed the structure of the output pane to make sure that it is
+                understandable with some explicit structure given that this ultimately
+                leads to the system goal (which is summative). The overall system goal
+                that I evaluated was whether or not the system provides a viable
+                solution to search for optimized tags based on a keyword. I believe the
+                demo will show that this is in fact achieved.</p></div>
+        <div class="section-writing-container"><h4 class="titleWidget">Reflection On The Product<br></h4>
+            <p style="text-align: left;margin-top: 10px;margin-bottom: 10px;"></p>
+            I believe that the final design of the system fully addresses the
+            problems that I identified during the planning and development process.
+            The system quickly and efficiently take the input of the keywords and
+            outputs the intended goal of the optimized tags. This will allow the
+            user to implement these tags in their own listings and receive the
+            benefit of more page views and sales. After doing extensive research on
+            the topic of tags, I have determined that these are a major factor in
+            listing success, which provides more legitimacy to the system. Over the
+            course of development, the summative system goal did not really change
+            at all. The goal was always to provide optimized tags to the user based
+            on a keyword input.<p style="text-align: left;margin-top: 10px;margin-bottom: 10px;">I
+                also believe that many of the techniques that I described in the UI
+                design section ratify the fact that the system is very user friendly and
+                basically shows the user itself how to functionally get the intended
+                result. I did this by having a demo where the user can repeatedly see
+                how to use the system and using JavaScript scrolling functions to guide
+                the user to where they ultimately need to go. In the real world, I
+                believe that this system would be easy to understand given the virtual
+                metaphor of the search bar and the strong incentive to achieve the user
+                goal. The user goal is to optimize keywords which is a subgoal of
+                increasing revenue. Given that there is a monetary incentive, it is
+                better to have a system that shows itself how to be used.</p>
+            <p style="text-align: left;margin-top: 10px;margin-bottom: 10px;">This
+                system has minimal barriers to adoption in my opinion. From what I have
+                researched, there are no systems out there that are even close to being
+                the same as it. I was surprised by this initially, but I was happy to
+                be the first one to create something like this. Again, I think that the
+                monetary incentive will be a major driving force in adoption since tags
+                are becoming more apparent in listings. Etsy even emphasizes the use of
+                tags now because it is beneficial for their algorithms. The only major
+                issue that I see with this system is scalability given the 10,000
+                request per day rate limit. However, there is the simple solution of
+                requesting a greater limit or authenticating users. However,
+                authenticating users could produce a privacy issue.</p></div>
+        <div class="section-writing-container"><h4 class="titleWidget">Reflection On The Process<br></h4>
+            <p style="text-align: left;margin-top: 10px;margin-bottom: 10px;"></p>I
+            used SBD as a major driving force of my systems development. As we have
+            learned in class, SBD has many benefits that help developers to produce
+            viable systems that fit user needs. For example, using SBD gave me the
+            benefit of fewer design changes, less need for user training, and most
+            likely an increased user loyalty. This is known as cost-justifying
+            usability, and it is one of the major benefits to using SBD. By
+            conducting my empirical evaluations, I was able to see real users try my
+            system. This helped me to gain valuable information not only on the
+            present system, but the entire goal overall. Additionally, I was able to
+            use minimalist design and documentation to help the user to better
+            understand functionality without the need of a massive user
+            documentation manual.<p style="text-align: left;margin-top: 10px;margin-bottom: 10px;"></p>I
+            think scenario writing and resulting claims really helped me to design
+            my UX and overall system. These pushed me to look through the lens of
+            various stakeholders and pose problems for me to solve. From there I was
+            able to produce scenarios and develop metaphors that users would be
+            able to leverage for understanding. The major examples of this were the
+            search bar and citations that I previously mentioned. For UI design I
+            was able to use hierarchical task evaluation (HTA) to break down tasks
+            so that I could understand the full user experience and understanding.
+            This gave me a wholistic view of what needed to be implemented.<p
+                    style="text-align: left;margin-top: 10px;margin-bottom: 10px;">The
+                greatest part of SBD that I leveraged was formative evaluation. This is
+                the concept that stuck out to me most in class since it guides
+                iterative development. Obviously, for a system that has never been put
+                into production before, this is a crucial concept for its evaluation. I
+                had many forms of my prototypes, and this concept allowed me to draw in
+                other aspects like problem and activity scenarios to create a system
+                that is really well rounded. I would definitely say that I would use SBD
+                to tackle upcoming tasks at my job. I spent the past summer working on
+                Wall Street with a number of different tools (even some I made myself).
+                At one point I could not understand why others were unable to understand
+                my UI, and now I have a way to solve this with SBD.</p></div>
+    </div>
+
+
+</section>
+
+
+<script type="text/javascript">
+    // var promise = Promise.resolve(ajaxPull());
+    //
+    // promise.then(function(val) {
+    //     console.log(val);
+    // });
+    function getShopID(url) {
+        $(".shop-id-holder").slideUp("slow")
+        const xhttp = new XMLHttpRequest();
+        var response = ''
+        // Define a callback function
+        xhttp.onload = function () {
+            //console.log(xhttp.responseText)
+            //var as = $(xhttp.responseText).find("a")
+            var res = xhttp.responseText;
+            if (res.indexOf('recipient_id=') != -1) {
+                var start = res.indexOf('recipient_id=') + 13
+                var shop_id = res.substring(start, res.indexOf('\"', start))
+                document.querySelector("body > section:nth-child(3) > div.shop-id-holder > div > h3").textContent = shop_id;
+            } else {
+                document.querySelector("body > section:nth-child(3) > div.shop-id-holder > div > h3").textContent = 'invalid name or url';
+            }
+
+
+        };
+        // Send a request
+        xhttp.open("GET", "/pull?url=" + url);
+        xhttp.send();
+
+    }
+
+
+</script>
+
+<!-- end feature section -->
+
+<!-- download section -->
+
+<!--<section class="download_section layout_padding-bottom">
+    <div class="container">
+        <div class="heading_container">
+            <h2>
+                Download Anytime, Anywhere
+            </h2>
+        </div>
+        <div class="layout_padding2-top">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="box">
+                        <div class="head-box">
+                            <div class="img-box">
+                                <img src="index_files/cloud-download.png" alt="">
+                            </div>
+                            <h6>
+                                Download The App
+                            </h6>
+                        </div>
+                        <div class="detail-box">
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                                do eiusmod tempor incididunt ut labore et dolore magna
+                                aliqua. Ut enim ad minim veniam
+                            </p>
+                        </div>
+                    </div>
+                    <div class="box">
+                        <div class="head-box">
+                            <div class="img-box">
+                                <img src="index_files/trophy_.png" alt="">
+                            </div>
+                            <h6>
+                                Easy to Customize
+                            </h6>
+                        </div>
+                        <div class="detail-box">
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                                do eiusmod tempor incididunt ut labore et dolore magna
+                                aliqua. Ut enim ad minim veniam
+                            </p>
+                        </div>
+                    </div>
+                    <div>
+                        <a href="" class="btn-1">
+                            Read More
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="main-img-box">
+                        <img src="index_files/download-img.png" alt="">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="box">
+                        <div class="head-box">
+                            <div class="img-box">
+                                <img src="index_files/playstore.png" alt="">
+                            </div>
+                            <h6>
+                                Connect Your Store
+                            </h6>
+                        </div>
+                        <div class="detail-box">
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                                do eiusmod tempor incididunt ut labore et dolore magna
+                                aliqua. Ut enim ad minim veniam
+                            </p>
+                        </div>
+                    </div>
+                    <div class="box">
+                        <div class="head-box">
+                            <div class="img-box">
+                                <img src="index_files/heart.png" alt="">
+                            </div>
+                            <h6>
+                                Enjoy Our App
+                            </h6>
+                        </div>
+                        <div class="detail-box">
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                                do eiusmod tempor incididunt ut labore et dolore magna
+                                aliqua. Ut enim ad minim veniam
+                            </p>
+                        </div>
+                    </div>
+                    <div>
+                        <a href="" class="btn-2">
+                            Download Now
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- end download section -->
+
+<!-- about section -->
+<!--<section class="about_section layout_padding">
+    <div class="container">
+        <div class="heading_container d-flex justify-content-lg-start">
+            <h2>
+                About Us
+            </h2>
+        </div>
+        <div class="layout_padding2-top">
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="detail-box b-1">
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                            sed do eiusmod tempor incididunt ut labore et dolore magna
+                        </p>
+                        <a href="">
+                            Read More
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="detail-box b-2">
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                            sed do eiusmod tempor incididunt ut labore et dolore magna
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- end about section -->
+
+<!-- subscribe section -->
+<!--<section class="subscribe_section layout_padding">
+    <div class="container">
+        <div class="heading_container">
+            <h2>
+                Subscribe For Updates
+            </h2>
+        </div>
+        <form action="" class="layout_padding2-top">
+            <input type="email" placeholder="Enter your email">
+            <button>
+                subscribe
+            </button>
+        </form>
+    </div>
+</section>
+
+<!-- end subscribe section -->
+
+<!-- client section -->
+<!--<section class="client_section layout_margin">
+    <div class="container">
+        <div class="heading_container">
+            <h2>
+                Check what people say About us!
+            </h2>
+        </div>
+        <div class="client_container layout_padding2-top">
+            <div class="client-id">
+                <div class="img-box">
+                    <img src="index_files/client.png" alt="">
+                </div>
+                <div class="name">
+                    <img src="index_files/quote.png" alt="">
+                    <h6>
+                        Sandy Delex
+                    </h6>
+                    <p>
+                        Reprehenderit
+                    </p>
+                </div>
+            </div>
+            <div class="client-detail">
+                <p>
+                    dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+                    veniam, quis nostrud esse cillum
+                </p>
+            </div>
+            <div class="d-flex justify-content-end">
+                <a href="">
+                    Read More
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- end client section -->
+
+<!-- contact section -->
+<!--<section class="contact_section layout_padding">
+    <div class="container">
+        <div class="d-flex ">
+            <h2>
+                Contact Us
+            </h2>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+
+                <form action="">
+                    <div class="contact_form-container">
+                        <div>
+                            <div>
+                                <input type="text" placeholder="Name">
+                            </div>
+                            <div>
+                                <input type="text" placeholder="Phone Number">
+                            </div>
+                            <div>
+                                <input type="email" placeholder="Email">
+                            </div>
+                            <div class="mt-5">
+                                <input type="text" placeholder="Message">
+                            </div>
+                            <div class="mt-5">
+                                <button type="submit">
+                                    send
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </form>
+            </div>
+            <div class="col-md-6">
+                <div class="contact_img-box">
+                    <img src="index_files/contact-img.png" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- end contact section -->
+<!-- info section -->
+<section class="info_section layout_padding-top">
+    <div class="info_logo-box">
+        <h2>
+            OD.io
+        </h2>
+    </div>
+    <div class="container layout_padding2" style="margin: auto;text-align: center">
+        <div class="row">
+            <div class="col-md-3" style="margin: auto">
+                <h5>
+                    About This Project
+                </h5>
+                <p>
+                    This project was created to show the capabilities of
+                    a backend scraping software to gain relevant keyword information for
+                    Etsy listings
+                </p>
+            </div>
+            <!--<div class="col-md-3">
+                <h5>
+                    Useful Link
+                </h5>
+                <ul>
+                    <li>
+                        <a href="">
+                            Video games
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            Remote control
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            3d controller
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-3">
+                <h5>
+                    Contact Us
+                </h5>
+                <p>
+                    dolor sit amet, consectetur magna aliqua. quisdotempor incididunt ut e
+                </p>
+            </div>
+            <div class="col-md-3">
+
+                <div class="subscribe_container">
+                    <h5>
+                        Newsletter
+                    </h5>
+                    <div class="form_container">
+                        <form action="">
+                            <input type="email" placeholder="Enter your email">
+                            <button type="submit">
+                                Subscribe
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="social_container">
+
+            <div class="social-box">
+                <a href="">
+                    <img src="index_files/fb.png" alt="">
+                </a>
+
+                <a href="">
+                    <img src="index_files/twitter.png" alt="">
+                </a>
+                <a href="">
+                    <img src="index_files/linkedin.png" alt="">
+                </a>
+                <a href="">
+                    <img src="index_files/instagram.png" alt="">
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- end info section -->
+            <!-- footer section -->
+            <section class="container-fluid footer_section">
+                <p>
+                    © 2022 Shane ODonnell
+                </p>
+            </section>
+            <!-- footer section -->
+
+            <script type="text/javascript" src="FinalReport_files/jquery-3.4.1.min.js"></script>
+            <script type="text/javascript" src="FinalReport_files/bootstrap.js"></script>
+
+            <script>
+                function openNav() {
+                    document.getElementById("myNav").classList.toggle("menu_width");
+                    document
+                        .querySelector(".custom_menu-btn")
+                        .classList.toggle("menu_btn-style");
+                }
+            </script>
+
+
+            <script>
+                (function () {
+                    var ws = new WebSocket('ws://' + window.location.host +
+                        '/jb-server-page?reloadMode=RELOAD_ON_SAVE&' +
+                        'referrer=' + encodeURIComponent(window.location.pathname));
+                    ws.onmessage = function (msg) {
+                        if (msg.data === 'reload') {
+                            window.location.reload();
+                        }
+                        if (msg.data.startsWith('update-css ')) {
+                            var messageId = msg.data.substring(11);
+                            var links = document.getElementsByTagName('link');
+                            for (var i = 0; i < links.length; i++) {
+                                var link = links[i];
+                                if (link.rel !== 'stylesheet') continue;
+                                var clonedLink = link.cloneNode(true);
+                                var newHref = link.href.replace(/(&|\?)jbUpdateLinksId=\d+/, "$1jbUpdateLinksId=" + messageId);
+                                if (newHref !== link.href) {
+                                    clonedLink.href = newHref;
+                                } else {
+                                    var indexOfQuest = newHref.indexOf('?');
+                                    if (indexOfQuest >= 0) {
+                                        // to support ?foo#hash
+                                        clonedLink.href = newHref.substring(0, indexOfQuest + 1) + 'jbUpdateLinksId=' + messageId + '&' +
+                                            newHref.substring(indexOfQuest + 1);
+                                    } else {
+                                        clonedLink.href += '?' + 'jbUpdateLinksId=' + messageId;
+                                    }
+                                }
+                                link.replaceWith(clonedLink);
+                            }
+                        }
+                    };
+                })();
+            </script>
+        </div>
+    </div>
+</section>
+<script>
+    (function () {
+        var ws = new WebSocket('ws://' + window.location.host +
+            '/jb-server-page?reloadMode=RELOAD_ON_SAVE&' +
+            'referrer=' + encodeURIComponent(window.location.pathname));
+        ws.onmessage = function (msg) {
+            if (msg.data === 'reload') {
+                window.location.reload();
+            }
+            if (msg.data.startsWith('update-css ')) {
+                var messageId = msg.data.substring(11);
+                var links = document.getElementsByTagName('link');
+                for (var i = 0; i < links.length; i++) {
+                    var link = links[i];
+                    if (link.rel !== 'stylesheet') continue;
+                    var clonedLink = link.cloneNode(true);
+                    var newHref = link.href.replace(/(&|\?)jbUpdateLinksId=\d+/, "$1jbUpdateLinksId=" + messageId);
+                    if (newHref !== link.href) {
+                        clonedLink.href = newHref;
+                    } else {
+                        var indexOfQuest = newHref.indexOf('?');
+                        if (indexOfQuest >= 0) {
+                            // to support ?foo#hash
+                            clonedLink.href = newHref.substring(0, indexOfQuest + 1) + 'jbUpdateLinksId=' + messageId + '&' +
+                                newHref.substring(indexOfQuest + 1);
+                        } else {
+                            clonedLink.href += '?' + 'jbUpdateLinksId=' + messageId;
+                        }
+                    }
+                    link.replaceWith(clonedLink);
+                }
+            }
+        };
+    })();
+</script>
+<script>
+    (function () {
+        var ws = new WebSocket('ws://' + window.location.host +
+            '/jb-server-page?reloadMode=RELOAD_ON_SAVE&' +
+            'referrer=' + encodeURIComponent(window.location.pathname));
+        ws.onmessage = function (msg) {
+            if (msg.data === 'reload') {
+                window.location.reload();
+            }
+            if (msg.data.startsWith('update-css ')) {
+                var messageId = msg.data.substring(11);
+                var links = document.getElementsByTagName('link');
+                for (var i = 0; i < links.length; i++) {
+                    var link = links[i];
+                    if (link.rel !== 'stylesheet') continue;
+                    var clonedLink = link.cloneNode(true);
+                    var newHref = link.href.replace(/(&|\?)jbUpdateLinksId=\d+/, "$1jbUpdateLinksId=" + messageId);
+                    if (newHref !== link.href) {
+                        clonedLink.href = newHref;
+                    } else {
+                        var indexOfQuest = newHref.indexOf('?');
+                        if (indexOfQuest >= 0) {
+                            // to support ?foo#hash
+                            clonedLink.href = newHref.substring(0, indexOfQuest + 1) + 'jbUpdateLinksId=' + messageId + '&' +
+                                newHref.substring(indexOfQuest + 1);
+                        } else {
+                            clonedLink.href += '?' + 'jbUpdateLinksId=' + messageId;
+                        }
+                    }
+                    link.replaceWith(clonedLink);
+                }
+            }
+        };
+    })();
+</script>
+<script>
+    (function () {
+        var ws = new WebSocket('ws://' + window.location.host +
+            '/jb-server-page?reloadMode=RELOAD_ON_SAVE&' +
+            'referrer=' + encodeURIComponent(window.location.pathname));
+        ws.onmessage = function (msg) {
+            if (msg.data === 'reload') {
+                window.location.reload();
+            }
+            if (msg.data.startsWith('update-css ')) {
+                var messageId = msg.data.substring(11);
+                var links = document.getElementsByTagName('link');
+                for (var i = 0; i < links.length; i++) {
+                    var link = links[i];
+                    if (link.rel !== 'stylesheet') continue;
+                    var clonedLink = link.cloneNode(true);
+                    var newHref = link.href.replace(/(&|\?)jbUpdateLinksId=\d+/, "$1jbUpdateLinksId=" + messageId);
+                    if (newHref !== link.href) {
+                        clonedLink.href = newHref;
+                    } else {
+                        var indexOfQuest = newHref.indexOf('?');
+                        if (indexOfQuest >= 0) {
+                            // to support ?foo#hash
+                            clonedLink.href = newHref.substring(0, indexOfQuest + 1) + 'jbUpdateLinksId=' + messageId + '&' +
+                                newHref.substring(indexOfQuest + 1);
+                        } else {
+                            clonedLink.href += '?' + 'jbUpdateLinksId=' + messageId;
+                        }
+                    }
+                    link.replaceWith(clonedLink);
+                }
+            }
+        };
+    })();
+</script>
+<script>
+    (function () {
+        var ws = new WebSocket('ws://' + window.location.host +
+            '/jb-server-page?reloadMode=RELOAD_ON_SAVE&' +
+            'referrer=' + encodeURIComponent(window.location.pathname));
+        ws.onmessage = function (msg) {
+            if (msg.data === 'reload') {
+                window.location.reload();
+            }
+            if (msg.data.startsWith('update-css ')) {
+                var messageId = msg.data.substring(11);
+                var links = document.getElementsByTagName('link');
+                for (var i = 0; i < links.length; i++) {
+                    var link = links[i];
+                    if (link.rel !== 'stylesheet') continue;
+                    var clonedLink = link.cloneNode(true);
+                    var newHref = link.href.replace(/(&|\?)jbUpdateLinksId=\d+/, "$1jbUpdateLinksId=" + messageId);
+                    if (newHref !== link.href) {
+                        clonedLink.href = newHref;
+                    } else {
+                        var indexOfQuest = newHref.indexOf('?');
+                        if (indexOfQuest >= 0) {
+                            // to support ?foo#hash
+                            clonedLink.href = newHref.substring(0, indexOfQuest + 1) + 'jbUpdateLinksId=' + messageId + '&' +
+                                newHref.substring(indexOfQuest + 1);
+                        } else {
+                            clonedLink.href += '?' + 'jbUpdateLinksId=' + messageId;
+                        }
+                    }
+                    link.replaceWith(clonedLink);
+                }
+            }
+        };
+    })();
+</script>
+</body>
+</html>

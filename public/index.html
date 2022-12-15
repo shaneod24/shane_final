@@ -1,5 +1,750 @@
 <html xmlns="http://www.w3.org/1999/html">
 <head>
+    <style>
+
+
+        p a {
+            text-decoration: none;
+            font-weight: bold;
+            color: #666;
+        }
+
+        p a:hover {
+            color: #8c60bd;
+        }
+
+        #loader {
+            display: none;
+            width: 80px;
+            height: 40px;
+            position: relative;
+            top: 50%;
+            left: 50%;
+            margin: 20px -40px;
+            z-index: 1000;
+        }
+
+        .lightsaber {
+            position: absolute;
+            width: 4px;
+            height: 12px;
+            background-color: #666;
+            border-radius: 1px;
+            bottom: 0;
+        }
+
+        .lightsaber.ls-left {
+            left: 0;
+        }
+
+        .lightsaber.ls-right {
+            right: 0;
+        }
+
+        .lightsaber:before {
+            position: absolute;
+            content: ' ';
+            display: block;
+            width: 2px;
+            height: 25px;
+            max-height: 1px;
+            left: 1px;
+            top: 1px;
+            background-color: #fff;
+            border-radius: 1px;
+            -webkit-transform: rotateZ(180deg);
+            transform: rotateZ(180deg);
+            -webkit-transform-origin: center top;
+            -ms-transform-origin: center top;
+            transform-origin: center top;
+        }
+
+        .lightsaber:after {
+            position: absolute;
+            content: ' ';
+            display: block;
+            width: 2px;
+            height: 2px;
+            left: 1px;
+            top: 4px;
+            background-color: #fff;
+            border-radius: 50%;
+        }
+
+        .ls-particles {
+            position: absolute;
+            left: 42px;
+            top: 10px;
+            width: 1px;
+            height: 5px;
+            background-color: rgb(51, 51, 51, 0);
+            -webkit-transform: rotateZ(0deg);
+            transform: rotateZ(0deg);
+        }
+
+
+        .lightsaber.ls-green:before {
+            -webkit-animation: showlightgreen 2s ease-in-out infinite 1s;
+            animation: showlightgreen 2s ease-in-out infinite 1s;
+        }
+
+        .lightsaber.ls-red:before {
+            -webkit-animation: showlightred 2s ease-in-out infinite 1s;
+            animation: showlightred 2s ease-in-out infinite 1s;
+        }
+
+
+        .lightsaber.ls-left {
+            -webkit-animation: fightleft 2s ease-in-out infinite 1s;
+            animation: fightleft 2s ease-in-out infinite 1s;
+        }
+
+        .lightsaber.ls-right {
+            -webkit-animation: fightright 2s ease-in-out infinite 1s;
+            animation: fightright 2s ease-in-out infinite 1s;
+        }
+
+        .ls-particles.ls-part-1 {
+            -webkit-animation: particles1 2s ease-out infinite 1s;
+            animation: particles1 2s ease-out infinite 1s;
+        }
+
+        .ls-particles.ls-part-2 {
+            -webkit-animation: particles2 2s ease-out infinite 1s;
+            animation: particles2 2s ease-out infinite 1s;
+        }
+
+        .ls-particles.ls-part-3 {
+            -webkit-animation: particles3 2s ease-out infinite 1s;
+            animation: particles3 2s ease-out infinite 1s;
+        }
+
+        .ls-particles.ls-part-4 {
+            -webkit-animation: particles4 2s ease-out infinite 1s;
+            animation: particles4 2s ease-out infinite 1s;
+        }
+
+        .ls-particles.ls-part-5 {
+            -webkit-animation: particles5 2s ease-out infinite 1s;
+            animation: particles5 2s ease-out infinite 1s;
+        }
+
+        @-webkit-keyframes showlightgreen {
+            0% {
+                max-height: 0;
+                box-shadow: 0 0 0 0 #8c60bd;
+            }
+
+            5% {
+                box-shadow: 0 0 4px 2px #8c60bd;
+            }
+
+            10% {
+                max-height: 22px;
+            }
+
+            80% {
+                max-height: 22px;
+            }
+
+            85% {
+                box-shadow: 0 0 4px 2px #8c60bd;
+            }
+
+            100% {
+                max-height: 0;
+                box-shadow: 0 0 0 0 #8c60bd;
+            }
+        }
+
+        @-webkit-keyframes showlightred {
+            0% {
+                max-height: 0;
+                box-shadow: 0 0 0 0 #8c60bd;
+            }
+
+            20% {
+                box-shadow: 0 0 4px 2px #8c60bd;
+            }
+
+            25% {
+                max-height: 22px;
+            }
+
+            80% {
+                max-height: 22px;
+            }
+
+            85% {
+                box-shadow: 0 0 4px 2px #8c60bd;
+            }
+
+            100% {
+                max-height: 0;
+                box-shadow: 0 0 0 0 #8c60bd;
+            }
+        }
+
+        @-webkit-keyframes fightleft {
+            0% {
+                -webkit-transform: rotateZ(0deg);
+                transform: rotateZ(0deg);
+                left: 0;
+                bottom: 0;
+            }
+
+            30% {
+                -webkit-transform: rotateZ(0deg);
+                transform: rotateZ(0deg);
+                bottom: 0;
+            }
+
+            40% {
+                -webkit-transform: rotateZ(45deg);
+                transform: rotateZ(45deg);
+                left: 0;
+                bottom: 2px;
+            }
+
+            45% {
+                -webkit-transform: rotateZ(65deg);
+                transform: rotateZ(65deg);
+                left: 0;
+            }
+
+            65% {
+                -webkit-transform: rotateZ(410deg);
+                transform: rotateZ(410deg);
+                left: 30px;
+                bottom: 10px;
+            }
+
+            95% {
+                -webkit-transform: rotateZ(410deg);
+                transform: rotateZ(410deg);
+                left: 0;
+                bottom: 0;
+            }
+
+            100% {
+                -webkit-transform: rotateZ(360deg);
+                transform: rotateZ(360deg);
+                left: 0;
+                bottom: 0;
+            }
+        }
+
+        @-webkit-keyframes fightright {
+            0% {
+                -webkit-transform: rotateZ(0deg);
+                transform: rotateZ(0deg);
+                right: 0;
+                bottom: 0;
+            }
+
+            30% {
+                -webkit-transform: rotateZ(0deg);
+                transform: rotateZ(0deg);
+                bottom: 0;
+            }
+
+            45% {
+                -webkit-transform: rotateZ(-45deg);
+                transform: rotateZ(-45deg);
+                right: 0;
+                bottom: 2px;
+            }
+
+            50% {
+                -webkit-transform: rotateZ(-65deg);
+                transform: rotateZ(-65deg);
+                right: 0;
+            }
+
+            68% {
+                -webkit-transform: rotateZ(-410deg);
+                transform: rotateZ(-410deg);
+                right: 27px;
+                bottom: 13px;
+            }
+
+            95% {
+                -webkit-transform: rotateZ(-410deg);
+                transform: rotateZ(-410deg);
+                right: 0;
+                bottom: 0;
+            }
+
+            100% {
+                -webkit-transform: rotateZ(-360deg);
+                transform: rotateZ(-360deg);
+                right: 0;
+                bottom: 0;
+            }
+        }
+
+        @-webkit-keyframes particles1 {
+            0% {
+                background-color: rgba(51, 51, 51, 0);
+                -webkit-transform: rotateZ(35deg) translateY(0px);
+                transform: rotateZ(35deg) translateY(0px);
+            }
+
+            63% {
+                background-color: rgba(51, 51, 51, 0);
+                -webkit-transform: rotateZ(35deg) translateY(0px);
+                transform: rotateZ(35deg) translateY(0px);
+            }
+
+            64% {
+                background-color: rgba(51, 51, 51, 1);
+                -webkit-transform: rotateZ(35deg) translateY(0px);
+                transform: rotateZ(35deg) translateY(0px);
+            }
+
+            100% {
+                background-color: rgba(51, 51, 51, 0);
+                -webkit-transform: rotateZ(35deg) translateY(-30px);
+                transform: rotateZ(35deg) translateY(-30px);
+            }
+        }
+
+        @-webkit-keyframes particles2 {
+            0% {
+                background-color: rgba(51, 51, 51, 0);
+                -webkit-transform: rotateZ(-65deg) translateY(0px);
+                transform: rotateZ(-65deg) translateY(0px);
+            }
+
+            63% {
+                background-color: rgba(51, 51, 51, 0);
+                -webkit-transform: rotateZ(-65deg) translateY(0px);
+                transform: rotateZ(-65deg) translateY(0px);
+            }
+
+            64% {
+                background-color: rgba(51, 51, 51, 1);
+                -webkit-transform: rotateZ(-65deg) translateY(0px);
+                transform: rotateZ(-65deg) translateY(0px);
+            }
+
+            95% {
+                background-color: rgba(51, 51, 51, 0);
+                -webkit-transform: rotateZ(-65deg) translateY(-40px);
+                transform: rotateZ(-65deg) translateY(-40px);
+            }
+
+            100% {
+                background-color: rgba(51, 51, 51, 0);
+                -webkit-transform: rotateZ(-65deg) translateY(-40px);
+                transform: rotateZ(-65deg) translateY(-40px);
+            }
+        }
+
+        @-webkit-keyframes particles3 {
+            0% {
+                background-color: rgba(51, 51, 51, 0);
+                -webkit-transform: rotateZ(-75deg) translateY(0px);
+                transform: rotateZ(-75deg) translateY(0px);
+            }
+
+            63% {
+                background-color: rgba(51, 51, 51, 0);
+                -webkit-transform: rotateZ(-75deg) translateY(0px);
+                transform: rotateZ(-75deg) translateY(0px);
+            }
+
+            64% {
+                background-color: rgba(51, 51, 51, 1);
+                -webkit-transform: rotateZ(-75deg) translateY(0px);
+                transform: rotateZ(-75deg) translateY(0px);
+            }
+
+            97% {
+                background-color: rgba(51, 51, 51, 0);
+                -webkit-transform: rotateZ(-75deg) translateY(-35px);
+                transform: rotateZ(-75deg) translateY(-35px);
+            }
+
+            100% {
+                background-color: rgba(51, 51, 51, 0);
+                -webkit-transform: rotateZ(-75deg) translateY(-35px);
+                transform: rotateZ(-75deg) translateY(-35px);
+            }
+        }
+
+        @-webkit-keyframes particles4 {
+            0% {
+                background-color: rgba(51, 51, 51, 0);
+                -webkit-transform: rotateZ(-25deg) translateY(0px);
+                transform: rotateZ(-25deg) translateY(0px);
+            }
+
+            63% {
+                background-color: rgba(51, 51, 51, 0);
+                -webkit-transform: rotateZ(-25deg) translateY(0px);
+                transform: rotateZ(-25deg) translateY(0px);
+            }
+
+            64% {
+                background-color: rgba(51, 51, 51, 1);
+                -webkit-transform: rotateZ(-25deg) translateY(0px);
+                transform: rotateZ(-25deg) translateY(0px);
+            }
+
+            97% {
+                background-color: rgba(51, 51, 51, 0);
+                -webkit-transform: rotateZ(-25deg) translateY(-30px);
+                transform: rotateZ(-25deg) translateY(-30px);
+            }
+
+            100% {
+                background-color: rgba(51, 51, 51, 0);
+                -webkit-transform: rotateZ(-25deg) translateY(-30px);
+                transform: rotateZ(-25deg) translateY(-30px);
+            }
+        }
+
+        @-webkit-keyframes particles5 {
+            0% {
+                background-color: rgba(51, 51, 51, 0);
+                -webkit-transform: rotateZ(65deg) translateY(0px);
+                transform: rotateZ(65deg) translateY(0px);
+            }
+
+            63% {
+                background-color: rgba(51, 51, 51, 0);
+                -webkit-transform: rotateZ(65deg) translateY(0px);
+                transform: rotateZ(65deg) translateY(0px);
+            }
+
+            64% {
+                background-color: rgba(51, 51, 51, 1);
+                -webkit-transform: rotateZ(65deg) translateY(0px);
+                transform: rotateZ(65deg) translateY(0px);
+            }
+
+            97% {
+                background-color: rgba(51, 51, 51, 0);
+                -webkit-transform: rotateZ(65deg) translateY(-35px);
+                transform: rotateZ(65deg) translateY(-35px);
+            }
+
+            100% {
+                background-color: rgba(51, 51, 51, 0);
+                -webkit-transform: rotateZ(65deg) translateY(-35px);
+                transform: rotateZ(65deg) translateY(-35px);
+            }
+        }
+
+        @keyframes showlightgreen {
+            0% {
+                max-height: 0;
+                box-shadow: 0 0 0 0 #8c60bd;
+            }
+
+            5% {
+                box-shadow: 0 0 4px 2px #8c60bd;
+            }
+
+            10% {
+                max-height: 22px;
+            }
+
+            80% {
+                max-height: 22px;
+            }
+
+            85% {
+                box-shadow: 0 0 4px 2px #8c60bd;
+            }
+
+            100% {
+                max-height: 0;
+                box-shadow: 0 0 0 0 #8c60bd;
+            }
+        }
+
+        @keyframes showlightred {
+            0% {
+                max-height: 0;
+                box-shadow: 0 0 0 0 #8c60bd;
+            }
+
+            20% {
+                box-shadow: 0 0 4px 2px #8c60bd;
+            }
+
+            25% {
+                max-height: 22px;
+            }
+
+            80% {
+                max-height: 22px;
+            }
+
+            85% {
+                box-shadow: 0 0 4px 2px #8c60bd;
+            }
+
+            100% {
+                max-height: 0;
+                box-shadow: 0 0 0 0 #8c60bd;
+            }
+        }
+
+        @keyframes fightleft {
+            0% {
+                -webkit-transform: rotateZ(0deg);
+                transform: rotateZ(0deg);
+                left: 0;
+                bottom: 0;
+            }
+
+            30% {
+                -webkit-transform: rotateZ(0deg);
+                transform: rotateZ(0deg);
+                bottom: 0;
+            }
+
+            40% {
+                -webkit-transform: rotateZ(45deg);
+                transform: rotateZ(45deg);
+                left: 0;
+                bottom: 2px;
+            }
+
+            45% {
+                -webkit-transform: rotateZ(65deg);
+                transform: rotateZ(65deg);
+                left: 0;
+            }
+
+            65% {
+                -webkit-transform: rotateZ(410deg);
+                transform: rotateZ(410deg);
+                left: 30px;
+                bottom: 10px;
+            }
+
+            95% {
+                -webkit-transform: rotateZ(410deg);
+                transform: rotateZ(410deg);
+                left: 0;
+                bottom: 0;
+            }
+
+            100% {
+                -webkit-transform: rotateZ(360deg);
+                transform: rotateZ(360deg);
+                left: 0;
+                bottom: 0;
+            }
+        }
+
+        @keyframes fightright {
+            0% {
+                -webkit-transform: rotateZ(0deg);
+                transform: rotateZ(0deg);
+                right: 0;
+                bottom: 0;
+            }
+
+            30% {
+                -webkit-transform: rotateZ(0deg);
+                transform: rotateZ(0deg);
+                bottom: 0;
+            }
+
+            45% {
+                -webkit-transform: rotateZ(-45deg);
+                transform: rotateZ(-45deg);
+                right: 0;
+                bottom: 2px;
+            }
+
+            50% {
+                -webkit-transform: rotateZ(-65deg);
+                transform: rotateZ(-65deg);
+                right: 0;
+            }
+
+            68% {
+                -webkit-transform: rotateZ(-410deg);
+                transform: rotateZ(-410deg);
+                right: 27px;
+                bottom: 13px;
+            }
+
+            95% {
+                -webkit-transform: rotateZ(-410deg);
+                transform: rotateZ(-410deg);
+                right: 0;
+                bottom: 0;
+            }
+
+            100% {
+                -webkit-transform: rotateZ(-360deg);
+                transform: rotateZ(-360deg);
+                right: 0;
+                bottom: 0;
+            }
+        }
+
+        @keyframes particles1 {
+            0% {
+                background-color: rgba(51, 51, 51, 0);
+                -webkit-transform: rotateZ(35deg) translateY(0px);
+                transform: rotateZ(35deg) translateY(0px);
+            }
+
+            63% {
+                background-color: rgba(51, 51, 51, 0);
+                -webkit-transform: rotateZ(35deg) translateY(0px);
+                transform: rotateZ(35deg) translateY(0px);
+            }
+
+            64% {
+                background-color: rgba(51, 51, 51, 1);
+                -webkit-transform: rotateZ(35deg) translateY(0px);
+                transform: rotateZ(35deg) translateY(0px);
+            }
+
+            100% {
+                background-color: rgba(51, 51, 51, 0);
+                -webkit-transform: rotateZ(35deg) translateY(-30px);
+                transform: rotateZ(35deg) translateY(-30px);
+            }
+        }
+
+        @keyframes particles2 {
+            0% {
+                background-color: rgba(51, 51, 51, 0);
+                -webkit-transform: rotateZ(-65deg) translateY(0px);
+                transform: rotateZ(-65deg) translateY(0px);
+            }
+
+            63% {
+                background-color: rgba(51, 51, 51, 0);
+                -webkit-transform: rotateZ(-65deg) translateY(0px);
+                transform: rotateZ(-65deg) translateY(0px);
+            }
+
+            64% {
+                background-color: rgba(51, 51, 51, 1);
+                -webkit-transform: rotateZ(-65deg) translateY(0px);
+                transform: rotateZ(-65deg) translateY(0px);
+            }
+
+            95% {
+                background-color: rgba(51, 51, 51, 0);
+                -webkit-transform: rotateZ(-65deg) translateY(-40px);
+                transform: rotateZ(-65deg) translateY(-40px);
+            }
+
+            100% {
+                background-color: rgba(51, 51, 51, 0);
+                -webkit-transform: rotateZ(-65deg) translateY(-40px);
+                transform: rotateZ(-65deg) translateY(-40px);
+            }
+        }
+
+        @keyframes particles3 {
+            0% {
+                background-color: rgba(51, 51, 51, 0);
+                -webkit-transform: rotateZ(-75deg) translateY(0px);
+                transform: rotateZ(-75deg) translateY(0px);
+            }
+
+            63% {
+                background-color: rgba(51, 51, 51, 0);
+                -webkit-transform: rotateZ(-75deg) translateY(0px);
+                transform: rotateZ(-75deg) translateY(0px);
+            }
+
+            64% {
+                background-color: rgba(51, 51, 51, 1);
+                -webkit-transform: rotateZ(-75deg) translateY(0px);
+                transform: rotateZ(-75deg) translateY(0px);
+            }
+
+            97% {
+                background-color: rgba(51, 51, 51, 0);
+                -webkit-transform: rotateZ(-75deg) translateY(-35px);
+                transform: rotateZ(-75deg) translateY(-35px);
+            }
+
+            100% {
+                background-color: rgba(51, 51, 51, 0);
+                -webkit-transform: rotateZ(-75deg) translateY(-35px);
+                transform: rotateZ(-75deg) translateY(-35px);
+            }
+        }
+
+        @keyframes particles4 {
+            0% {
+                background-color: rgba(51, 51, 51, 0);
+                -webkit-transform: rotateZ(-25deg) translateY(0px);
+                transform: rotateZ(-25deg) translateY(0px);
+            }
+
+            63% {
+                background-color: rgba(51, 51, 51, 0);
+                -webkit-transform: rotateZ(-25deg) translateY(0px);
+                transform: rotateZ(-25deg) translateY(0px);
+            }
+
+            64% {
+                background-color: rgba(51, 51, 51, 1);
+                -webkit-transform: rotateZ(-25deg) translateY(0px);
+                transform: rotateZ(-25deg) translateY(0px);
+            }
+
+            97% {
+                background-color: rgba(51, 51, 51, 0);
+                -webkit-transform: rotateZ(-25deg) translateY(-30px);
+                transform: rotateZ(-25deg) translateY(-30px);
+            }
+
+            100% {
+                background-color: rgba(51, 51, 51, 0);
+                -webkit-transform: rotateZ(-25deg) translateY(-30px);
+                transform: rotateZ(-25deg) translateY(-30px);
+            }
+        }
+
+        @keyframes particles5 {
+            0% {
+                background-color: rgba(51, 51, 51, 0);
+                -webkit-transform: rotateZ(65deg) translateY(0px);
+                transform: rotateZ(65deg) translateY(0px);
+            }
+
+            63% {
+                background-color: rgba(51, 51, 51, 0);
+                -webkit-transform: rotateZ(65deg) translateY(0px);
+                transform: rotateZ(65deg) translateY(0px);
+            }
+
+            64% {
+                background-color: rgba(51, 51, 51, 1);
+                -webkit-transform: rotateZ(65deg) translateY(0px);
+                transform: rotateZ(65deg) translateY(0px);
+            }
+
+            97% {
+                background-color: rgba(51, 51, 51, 0);
+                -webkit-transform: rotateZ(65deg) translateY(-35px);
+                transform: rotateZ(65deg) translateY(-35px);
+            }
+
+            100% {
+                background-color: rgba(51, 51, 51, 0);
+                -webkit-transform: rotateZ(65deg) translateY(-35px);
+                transform: rotateZ(65deg) translateY(-35px);
+            }
+        }
+    </style>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <!-- Basic -->
     <meta charset="utf-8">
@@ -26,27 +771,56 @@
     <link href="index_files/style.css" rel="stylesheet">
     <!-- responsive style -->
     <link href="index_files/responsive.css" rel="stylesheet">
+    <script src="index_files/prompt_002_002.js"></script>
+    <script src="index_files/prompt_002_002.js"></script>
+    <script src="index_files/prompt_002_002.js"></script>
+    <script src="index_files/prompt_002_002.js"></script>
+    <script src="index_files/prompt_002_002.js"></script>
+    <script src="index_files/prompt_002_002.js"></script>
+    <script src="index_files/prompt_002_002.js"></script>
+    <script src="index_files/prompt_002_003.js"></script>
+    <script src="index_files/prompt_002_003.js"></script>
+    <script src="index_files/prompt_002_003.js"></script>
+    <script src="index_files/prompt_002_003.js"></script>
+    <script src="index_files/jquery.min.js"></script>
+    <script src="index_files/keywordcrawler.js" type="text/javascript"></script>
+    <script src="index_files/shopID.js" type="text/javascript"></script>
+    <script src="index_files/prompt_002_003.js"></script>
+    <script src="index_files/prompt_002_004_002.js"></script>
+    <script src="index_files/prompt_002_004_003.js"></script>
+    <script src="index_files/prompt_002_004_004.js"></script>
+    <script src="index_files/prompt_002_004_005_002.js"></script>
+    <script src="index_files/prompt_002_004_005_003.js"></script>
+    <script src="index_files/prompt_002_004_005_004.js"></script>
+    <script src="index_files/prompt_002_004_005_005.js"></script>
+    <script src="index_files/prompt_002_004_005.js"></script>
+    <script src="index_files/prompt_002_004.js"></script>
+    <script src="index_files/prompt_002.js"></script>
     <script src="index_files/prompt.js"></script>
-    <script src="index_files/prompt.js"></script>
-    <script src="index_files/prompt.js"></script>
-    <script src="index_files/prompt.js"></script>
-    <script src="index_files/prompt.js"></script>
-    <script src="index_files/prompt.js"></script>
-    <script src="index_files/prompt.js"></script>
-    <script src="moz-extension://3df05c1e-2dad-4d28-b0ca-32ba0f5da88f/assets/prompt.js"></script>
-    <script src="moz-extension://3df05c1e-2dad-4d28-b0ca-32ba0f5da88f/assets/prompt.js"></script>
-    <script src="moz-extension://3df05c1e-2dad-4d28-b0ca-32ba0f5da88f/assets/prompt.js"></script>
-    <script src="moz-extension://3df05c1e-2dad-4d28-b0ca-32ba0f5da88f/assets/prompt.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 
 <body>
+
+<script type="text/javascript">
+
+    // getListingInfo().then(result => {
+    //     alert(result); // {"metadata": "for: test.png"}
+    // });
+
+
+</script>
+
 <div class="hero_area">
     <!-- header section strats -->
-    <header class="header_section">
+    <header class="header_section" id="headerTop" style="margin-bottom:0px">
+        <script>
+            if (window.navigator.userAgent.indexOf('iPhone') != -1) {
+                document.getElementById("headerTop").style.marginBottom = "30%";
+            }
+        </script>
         <div class="container-fluid">
             <nav class="navbar navbar-expand-lg custom_nav-container">
-                <a class="navbar-brand" href="index.html">
+                <a class="navbar-brand" href="http://localhost:3000/index.html">
                     <span>Etsy Seller Tools</span>
                 </a>
 
@@ -60,10 +834,11 @@
                     </div>
                     <div id="myNav" class="overlay">
                         <div class="overlay-content">
-                            <a href="index.html">HOME</a>
-                            <a href="about.html">ABOUT</a>
-                            <a href="feature.html">FEATURE</a>
-                            <a href="contact.html">CONTACT US</a>
+                            <a href="/index.html">Home</a><a href="/PrototypePage.html">Prototype Page</a><a
+                                href="/FinalReport.html">Final Report Page</a><a
+                                href="https://dronediscount.myshopify.com/">Previous Phases</a>
+
+
                         </div>
                     </div>
                 </div>
@@ -93,7 +868,7 @@
                             async function showDemo() {
                                 scrollintoView('searchbox');
                                 var i = 0;
-                                var txt = 'Soft Tee Shirt';
+                                var txt = 'LightSaber';
                                 var speed = 50;
                                 document.getElementsByClassName('searchbox')[0].value = "";
 
@@ -108,6 +883,7 @@
                                 }
 
                                 let c = await typeWriter('searchbox')
+                                $("#loader").slideDown("slow")
 
                                 demo(txt)
 
@@ -119,12 +895,12 @@
                 <div class="col-md-5">
                     <div id="carouselExampleIndicators" class="carousel slide pointer-event" data-ride="carousel">
                         <ol class="carousel-indicators">
-                            <li data-target="#carouselExampleIndicators" data-slide-to="0" class=""></li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
                             <li data-target="#carouselExampleIndicators" data-slide-to="1" class=""></li>
-                            <li data-target="#carouselExampleIndicators" data-slide-to="2" class="active"></li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="2" class=""></li>
                         </ol>
                         <div class="carousel-inner">
-                            <div class="carousel-item">
+                            <div class="carousel-item active">
                                 <div class="img-box">
                                     <img src="index_files/demo.png" alt="Keyword Research">
                                 </div>
@@ -134,7 +910,7 @@
                                     <img src="index_files/slider-img.png" alt="Shop ID Lookup">
                                 </div>
                             </div>
-                            <div class="carousel-item active">
+                            <div class="carousel-item">
                                 <div class="img-box">
                                     <img src="index_files/slider-img.png" alt="Shop Research">
                                 </div>
@@ -167,20 +943,72 @@
 <section class="feature_section layout_padding2 layout_margin">
     <div class="container">
         <div class="heading_container">
+            <h2 class="titleWidget">Abstract<br></h2>
+        </div>
+        <div><p>
+            The overall goal for this project was to create a viable solution that
+            could be used by Etsy sellers in order to gain an upper hand. This
+            prototype has gone through numerous stages of planning, development, and
+            refinement. There are numerous concepts and principles that were
+            implemented under the umbrella of Scenario Based Design (SBD) that
+            allowed for an array of benefits compared to traditional methods of
+            production. Looking through the lens of many different archetypes of
+            users, I was able to identify given problem scenarios and act upon them
+            to implement different features and structures in my system. From there,
+            activity scenarios and claims were analyzed to create primitive, or
+            “quick and dirty” prototypes also known as low fidelity prototypes. This
+            allowed me to conduct formative tests in order to procure reactions
+            from actual users.
+            The summative goal of the system was to allow Etsy sellers to research
+            keywords that they wanted their items to show up during a given search
+            on the Etsy marketplace. Therefore, they would gain exposure and sales
+            resulting in a revenue increase. The use of keywords is very important
+            within the Etsy search algorithm, that is why the company has allowed
+            users to input up to 13 keywords directly into listings. This has been
+            shown to increase sales and exposure, leading to the need of optimized
+            keywords. To solve that problem, I found a way to scrape keywords from
+            top listings for a given keyword in the marketplace so that the user
+            will have the best (and most optimal) chance at registering for a top
+            spot.</p>
+            <p>
+                Cal, Jan. “Etsy Tags, Etsy Keywords: The Difference.” ERank Help, 30
+                Sept. 2020, help.erank.com/blog/etsy-tags-etsy-keywords-the-difference/.
+
+                “Everything a Seller Should Know about Etsy Tags.” EtsyHunt,
+                etsyhunt.com/blog/everything-a-seller-should-know-about-etsy-tags.
+                Trina.
+
+                “Etsy Shop Tags.” Oh She Creates, 16 May 2022,
+                ohshecreates.com/etsy-tags/.
+
+
+            </p></div>
+        <div style="margin: auto;width: ;">
+            <a href="javascript:showDemo()" style="margin: auto;display: block;text-align: center;max-width: 50%;">Click
+                For Demo</a>
+        </div>
+    </div>
+
+
+</section>
+<section class="feature_section layout_padding2 layout_margin">
+    <div class="container">
+        <div class="heading_container">
             <h2 class="titleWidget">Search For An Etsy Keyword<br></h2>
         </div>
     </div>
     <div class="container">
 
         <div>
-            <input id="demo" type="text" size="40" placeholder="Type a keyword and press enter" style="display: block;
+            <input id="demo" type="text" size="40" placeholder="Type a keyword and press enter" style="width: 100%;display: block;
     margin-right: auto;
-    margin-left: auto; text-align: center" class="searchbox">
+    margin-left: auto; text-align: center" class="searchbox" value="LightSaber">
             <script type="text/javascript">
                 const node = document.getElementsByClassName("searchbox")[0];
 
                 function demo(text) {
                     $(".listing_info").slideUp("slow")
+
                     var xhttp = new XMLHttpRequest();
                     xhttp.onreadystatechange = function () {
                         if (this.readyState == 4 && this.status == 200) {
@@ -219,11 +1047,15 @@
                                     '    margin-right: auto;\n' +
                                     '    margin-left: auto; text-align: center">Keywords</h6>\n' +
                                     '        </div>\n' +
-                                    '          <div class="keywordholder"><p class="keyword" style="text-align: center;">' + keywordsHtml + '</p></div><a style="display: block;\n' +
+                                    '          <div class="keywordholder"><p class="keyword" style="text-align: center;">' + keywordsHtml + '</p></div><a target="_blank" rel="noopener noreferrer" style="display: block;\n' +
                                     '    margin-right: auto;\n' +
                                     '    margin-left: auto; text-align: center" href=' + data[i][0] + ' class="visitListing">Visit Listing</a></div>';
 
                                 $(".listing_info").slideDown("slow")
+
+                                setTimeout(function () {
+                                    $("#loader").slideUp("slow")
+                                }, 1000);
 
 
                             }
@@ -238,6 +1070,7 @@
                 node.addEventListener("keyup", function (event) {
                     if (event.key === "Enter") {
                         $(".listing_info").slideUp("slow")
+                        $("#loader").slideDown("slow")
                         let search = document.getElementsByClassName("searchbox")[0].value;
                         console.log(search);
                         var xhttp = new XMLHttpRequest();
@@ -278,11 +1111,15 @@
                                         '    margin-right: auto;\n' +
                                         '    margin-left: auto; text-align: center">Keywords</h6>\n' +
                                         '        </div>\n' +
-                                        '          <div class="keywordholder"><p class="keyword" style="text-align: center;">' + keywordsHtml + '</p></div><a style="display: block;\n' +
+                                        '          <div class="keywordholder"><p class="keyword" style="text-align: center;">' + keywordsHtml + '</p></div><a target="_blank" rel="noopener noreferrer" style="display: block;\n' +
                                         '    margin-right: auto;\n' +
                                         '    margin-left: auto; text-align: center" href=' + data[i][0] + ' class="visitListing">Visit Listing</a></div>';
 
                                     $(".listing_info").slideDown("slow")
+
+                                    setTimeout(function () {
+                                        $("#loader").slideUp("slow")
+                                    }, 1000);
 
 
                                 }
@@ -301,20 +1138,29 @@
             </div>
         </div>
     </div>
+    <div id="loader" style="display: none;">
+        <div class="ls-particles ls-part-1"></div>
+        <div class="ls-particles ls-part-2"></div>
+        <div class="ls-particles ls-part-3"></div>
+        <div class="ls-particles ls-part-4"></div>
+        <div class="ls-particles ls-part-5"></div>
+        <div class="lightsaber ls-left ls-green"></div>
+        <div class="lightsaber ls-right ls-red"></div>
+    </div>
     <div class="container">
 
-        <div class="listing_info" style="display:none">
+        <div class="listing_info" style="">
             <div class="row">
                 <div class="col-md-4">
                     <div class="box">
-                        <div class="head-box">
+                        <div id="info-holder" class="head-box">
 
                             <h6 style="display: block;
     margin-right: auto;
     margin-left: auto; text-align: center">Top Listing</h6>
                         </div>
                         <div>
-                            <img src="https://ik.imagekit.io/ikmedia/women-dress-2.jpg" style="display: block;
+                            <img src="index_files/il_794xN.4337718086_j0we.webp" style="display: block;
     margin-right: auto;
     margin-left: auto; text-align: center" width="200" height="200">
                         </div>
@@ -323,7 +1169,10 @@
 
                             <h6 style="display: block;
     margin-right: auto;
-    margin-left: auto; text-align: center">Listing Title Goes Here</h6>
+    margin-left: auto; text-align: center">
+                                ZiaSabers Lego Lightsaber Custom Smooth Swing RGB LED Dueling Lightsaber for Adults with
+                                10 Soundfonts
+                            </h6>
                         </div>
                         <br>
                         <div class="head-box">
@@ -332,21 +1181,25 @@
     margin-right: auto;
     margin-left: auto; text-align: center">Keywords</h6>
                         </div>
-                        <div class="keywordholder"><p class="keyword" style="text-align: center;">Shane</p></div>
-                        <a style="display: block;
+                        <div class="keywordholder"><p class="keyword" style="text-align: center;"></p>
+                            <p classname="keyword" style="text-align: center;">dueling lightsaber</p>
+                            <p></p></div>
+                        <a target="_blank" rel="noopener noreferrer" style="display: block;
     margin-right: auto;
-    margin-left: auto; text-align: center" href="" class="visitListing">Visit Listing</a></div>
+    margin-left: auto; text-align: center"
+                           href="https://www.etsy.com/listing/1330633414/ziasabers-lego-lightsaber-custom-smooth?click_key=9f7aacf04d222e34aa6aaef3faea9a1b35af530d%3A1330633414&amp;click_sum=d56352fb&amp;ga_order=most_relevant&amp;ga_search_type=all&amp;ga_view_type=gallery&amp;ga_search_query=LightSaber&amp;ref=search_grid-293398-1-2&amp;pro=1&amp;frs=1&amp;edd=1"
+                           class="visitListing">Visit Listing</a></div>
                 </div>
                 <div class="col-md-4">
                     <div class="box">
-                        <div class="head-box">
+                        <div id="info-holder" class="head-box">
 
                             <h6 style="display: block;
     margin-right: auto;
     margin-left: auto; text-align: center">Top Listing</h6>
                         </div>
                         <div>
-                            <img src="https://ik.imagekit.io/ikmedia/women-dress-2.jpg" style="display: block;
+                            <img src="index_files/il_794xN.4412159316_36oi.webp" style="display: block;
     margin-right: auto;
     margin-left: auto; text-align: center" width="200" height="200">
                         </div>
@@ -355,7 +1208,10 @@
 
                             <h6 style="display: block;
     margin-right: auto;
-    margin-left: auto; text-align: center">Listing Title Goes Here</h6>
+    margin-left: auto; text-align: center">
+                                Tusken Slayer Anakin AOTC Lightsaber Neopixel Attack of the Clones RGB led Sound Force
+                                FX
+                            </h6>
                         </div>
                         <br>
                         <div class="head-box">
@@ -364,21 +1220,35 @@
     margin-right: auto;
     margin-left: auto; text-align: center">Keywords</h6>
                         </div>
-                        <div class="keywordholder"><p class="keyword" style="text-align: center;">Shane</p></div>
-                        <a style="display: block;
+                        <div class="keywordholder"><p class="keyword" style="text-align: center;"></p>
+                            <p classname="keyword" style="text-align: center;">lightsaber</p>
+                            <p classname="keyword" style="text-align: center;">ROTJ</p>
+                            <p classname="keyword" style="text-align: center;">Jedi</p>
+                            <p classname="keyword" style="text-align: center;">Skywalker</p>
+                            <p classname="keyword" style="text-align: center;">Darth Vader</p>
+                            <p classname="keyword" style="text-align: center;">Saberforge</p>
+                            <p classname="keyword" style="text-align: center;">LED</p>
+                            <p classname="keyword" style="text-align: center;">Luke Skywalker</p>
+                            <p classname="keyword" style="text-align: center;">Neopixel</p>
+                            <p classname="keyword" style="text-align: center;">Anakin</p>
+                            <p classname="keyword" style="text-align: center;">Obi Wan Kenobi</p>
+                            <p></p></div>
+                        <a target="_blank" rel="noopener noreferrer" style="display: block;
     margin-right: auto;
-    margin-left: auto; text-align: center" href="" class="visitListing">Visit Listing</a></div>
+    margin-left: auto; text-align: center"
+                           href="https://www.etsy.com/listing/1228545548/tusken-slayer-anakin-aotc-lightsaber?click_key=01cc7879297926c0ecfc82e34fbd2dc75b51a084%3A1228545548&amp;click_sum=f1174960&amp;ga_order=most_relevant&amp;ga_search_type=all&amp;ga_view_type=gallery&amp;ga_search_query=LightSaber&amp;ref=search_grid-293398-1-1&amp;pro=1&amp;frs=1&amp;edd=1&amp;sts=1"
+                           class="visitListing">Visit Listing</a></div>
                 </div>
                 <div class="col-md-4">
                     <div class="box">
-                        <div class="head-box">
+                        <div id="info-holder" class="head-box">
 
                             <h6 style="display: block;
     margin-right: auto;
     margin-left: auto; text-align: center">Top Listing</h6>
                         </div>
                         <div>
-                            <img src="https://ik.imagekit.io/ikmedia/women-dress-2.jpg" style="display: block;
+                            <img src="index_files/il_794xN.3152645606_jm7q.webp" style="display: block;
     margin-right: auto;
     margin-left: auto; text-align: center" width="200" height="200">
                         </div>
@@ -387,7 +1257,9 @@
 
                             <h6 style="display: block;
     margin-right: auto;
-    margin-left: auto; text-align: center">Listing Title Goes Here</h6>
+    margin-left: auto; text-align: center">
+                                FULL METAL Hunter's Ingot, weighs nearly 1lbs not Mandalorian Beskar
+                            </h6>
                         </div>
                         <br>
                         <div class="head-box">
@@ -396,10 +1268,20 @@
     margin-right: auto;
     margin-left: auto; text-align: center">Keywords</h6>
                         </div>
-                        <div class="keywordholder"><p class="keyword" style="text-align: center;">Shane</p></div>
-                        <a style="display: block;
+                        <div class="keywordholder"><p class="keyword" style="text-align: center;"></p>
+                            <p classname="keyword" style="text-align: center;">Ingot</p>
+                            <p classname="keyword" style="text-align: center;">beskar</p>
+                            <p classname="keyword" style="text-align: center;">metal beskar</p>
+                            <p classname="keyword" style="text-align: center;">lightsaber</p>
+                            <p classname="keyword" style="text-align: center;">metal lightsaber</p>
+                            <p classname="keyword" style="text-align: center;">saberforge</p>
+                            <p classname="keyword" style="text-align: center;">saber forge</p>
+                            <p></p></div>
+                        <a target="_blank" rel="noopener noreferrer" style="display: block;
     margin-right: auto;
-    margin-left: auto; text-align: center" href="" class="visitListing">Visit Listing</a></div>
+    margin-left: auto; text-align: center"
+                           href="https://www.etsy.com/listing/1027418627/full-metal-hunters-ingot-weighs-nearly?click_key=3af8a2812fcf179d620f8c9f561d092c8898a642%3A1027418627&amp;click_sum=08789519&amp;ga_order=most_relevant&amp;ga_search_type=all&amp;ga_view_type=gallery&amp;ga_search_query=LightSaber&amp;ref=search_grid-293398-1-3&amp;edd=1&amp;pop=1"
+                           class="visitListing">Visit Listing</a></div>
                 </div>
 
 
@@ -417,162 +1299,95 @@
 <section class="feature_section layout_padding2 layout_margin">
     <div class="container">
         <div class="heading_container">
-            <h2>
-                Amazing Features To Use <br>
-                Our Application
-            </h2>
+            <h2>What is my Etsy Shop ID?</h2>
         </div>
     </div>
     <div class="container">
-        <div class="row">
-            <div class="col-md-4">
-                <div class="box">
-                    <div class="head-box">
-                        <div class="img-box">
-                            <svg height="512pt" viewBox="0 0 512 512.08926" width="512pt"
-                                 xmlns="http://www.w3.org/2000/svg">
-                                <path d="m383.808594 117.007812 11.316406-11.3125 11.3125 11.3125-11.3125 11.3125zm0 0"></path>
-                                <path d="m146.390625 354.433594 112-112 11.3125 11.3125-112 112zm0 0"></path>
-                                <path d="m32.042969 456.089844h176v16h-176zm0 0"></path>
-                                <path d="m32.042969 424.089844h32v16h-32zm0 0"></path>
-                                <path d="m80.042969 424.089844h32v16h-32zm0 0"></path>
-                                <path d="m128.042969 424.089844h80v16h-80zm0 0"></path>
-                                <path d="m455.078125 170.191406c42.605469-42.335937 63.105469-102.078125 55.460937-161.652344l-.796874-6.179687-6.175782-.796875c-59.574218-7.621094-119.304687 12.886719-161.632812 55.496094l-28.945313 28.949218-50.910156-5.65625-76.257813 76.257813 39.601563 39.601563 33.933594-33.945313 11.601562 11.601563-34.222656 34.222656h-204.691406c-17.671875 0-32.0000002 14.328125-32.0000002 32v240c0 17.671875 14.3281252 32 32.0000002 32h352c17.675781 0 32-14.328125 32-32v-214.296875l15.738281-15.734375-5.65625-50.90625zm40.253906-153.398437c2.945313 31.992187-2.863281 64.183593-16.800781 93.128906l-76.320312-76.328125c28.949218-13.929688 61.132812-19.734375 93.121093-16.800781zm-247.289062 134.160156-22.621094 22.632813-16.976563-16.976563 59.503907-59.511719 30.550781 3.398438-27.679688 27.671875zm34.226562 34.222656 16.6875 16.691407-22.632812 22.621093 11.3125 11.3125 22.632812-22.625 16.6875 16.691407-66.632812 66.621093 11.3125 11.3125 66.632812-66.625 11.597657 11.601563-33.941407 33.945312 39.597657 39.589844 12.519531-12.527344v70.304688h-320v-128h140.691406l-16.410156 16.398437 11.3125 11.3125zm117.773438 294.914063c0 8.835937-7.160157 16-16 16h-352c-8.835938 0-16-7.164063-16-16v-240c0-8.835938 7.164062-16 16-16h188.691406l-16 16h-172.691406v160h352v-102.296875l16-16zm-44.519531-176.402344-16.976563-16.964844 22.632813-22.632812 50.449218-50.457032 3.390625 30.550782zm5.65625-62.230469-39.597657-39.589843 33.941407-33.945313-11.3125-11.3125-33.941407 33.9375-39.601562-39.59375 82.578125-82.582031c10.304687-10.296875 21.828125-19.296875 34.308594-26.808594l83.019531 83.015625c-7.515625 12.476563-16.515625 23.996094-26.808594 34.304687zm0 0"></path>
-                                <path d="m186.382812 66.429688 64.003907-64 11.3125 11.3125-64.003907 64zm0 0"></path>
-                                <path d="m122.382812 66.429688 48-47.996094 11.3125 11.3125-48 48zm0 0"></path>
-                                <path d="m434.386719 314.429688 64.003906-64 11.3125 11.3125-64 64zm0 0"></path>
-                                <path d="m434.386719 378.429688 47.996093-47.996094 11.316407 11.3125-48 48zm0 0"></path>
-                                <path d="m138.386719 306.429688 22.628906-22.625 11.3125 11.3125-22.628906 22.628906zm0 0"></path>
-                                <path d="m226.390625 330.429688 22.628906-22.625 11.3125 11.3125-22.628906 22.628906zm0 0"></path>
-                                <path d="m232.042969 480.089844h136v-64h-136zm88-48h32v32h-32zm-72 0h56v32h-56zm0 0"></path>
-                            </svg>
 
-                        </div>
-                        <h6>
-                            Quick Boostup
-                        </h6>
-                    </div>
-                    <div class="detail-box">
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                            do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                            Ut enim ad minim veniam
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="box">
-                    <div class="head-box">
-                        <div class="img-box">
-                            <svg id="Capa_1" enable-background="new 0 0 512 512" height="512" viewBox="0 0 512 512"
-                                 width="512" xmlns="http://www.w3.org/2000/svg">
-                                <path d="m507.606 155.023-150.632-150.629c-2.813-2.814-6.628-4.394-10.606-4.394s-7.794 1.58-10.607 4.394l-56.4 56.398c-2.813 2.813-4.394 6.628-4.394 10.606 0 3.979 1.581 7.794 4.394 10.607l13.841 13.84c-33.74 29.925-72.881 47.928-116.557 53.559-36.544 4.712-62.791-1.46-63.013-1.515-7.85-1.938-15.823 2.692-18.028 10.47l-94.348 332.638c-2.421 5.543-1.342 12.235 3.236 16.719 2.919 2.859 6.709 4.284 10.496 4.284 2.481 0 4.957-.618 7.19-1.838l331.451-93.773c7.783-2.202 12.419-10.179 10.479-18.031-.243-.984-22.395-95.369 52.059-179.552l13.827 13.827c2.929 2.93 6.767 4.394 10.607 4.394 3.838 0 7.678-1.465 10.607-4.394l56.4-56.397c2.813-2.813 4.394-6.628 4.394-10.606s-1.582-7.795-4.396-10.607zm-174.946 177.892c-3.06 24.854-1.76 45.431-.144 58.27l-266.826 75.489 118.383-120.861c9.316 5.464 19.949 8.387 31.035 8.387 16.43 0 31.877-6.397 43.495-18.016h.001c23.982-23.982 23.982-63.005-.001-86.987s-63.006-23.982-86.989 0c-20.481 20.481-23.457 51.923-8.956 75.607l-116.943 119.39 75.082-264.715c12.839 1.616 33.42 2.919 58.28-.143 35.648-4.389 86.991-18.911 135.359-62.257l80.483 80.481c-43.346 48.366-57.869 99.708-62.259 135.355zm-139.834-62.506c6.144-6.144 14.211-9.214 22.281-9.214 8.068 0 16.139 3.072 22.281 9.214 12.286 12.286 12.286 32.275 0 44.561-5.952 5.951-13.864 9.228-22.281 9.228s-16.329-3.277-22.281-9.228c-12.285-12.285-12.285-32.275 0-44.561zm247.774-69.595-14.155-14.154c-.002-.002-.003-.003-.004-.005-.002-.002-.003-.003-.005-.005l-115.254-115.252 35.186-35.185 129.418 129.416z"></path>
-                            </svg>
-                        </div>
-                        <h6>
-                            Modern Design
-                        </h6>
-                    </div>
-                    <div class="detail-box">
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                            do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                            Ut enim ad minim veniam
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="box">
-                    <div class="head-box">
-                        <div class="img-box">
-                            <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
-                                 xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512"
-                                 style="enable-background:new 0 0 512 512;" xml:space="preserve">
-                  <g>
-                    <g>
-                      <g>
-                        <path d="M294,198H60c-33.084,0-60,26.916-60,60v154c0,33.084,26.916,60,60,60h234c33.084,0,60-26.916,60-60V258
-                     C354,224.916,327.084,198,294,198z M314,412c0,11.028-8.972,20-20,20H60c-11.028,0-20-8.972-20-20V258c0-11.028,8.972-20,20-20
-                     h234c11.028,0,20,8.972,20,20V412z"></path>
-                          <rect y="120" width="40" height="40"></rect>
-                          <path d="M40,40C17.909,40,0,57.909,0,80h40V40z"></path>
-                          <rect x="236" y="40" width="40" height="40"></rect>
-                          <rect x="158" y="40" width="40" height="40"></rect>
-                          <rect x="79" y="40" width="40" height="40"></rect>
-                          <path d="M472,40v40h40C512,57.909,494.091,40,472,40z"></path>
-                          <rect x="472" y="354" width="40" height="40"></rect>
-                          <rect x="472" y="276" width="40" height="40"></rect>
-                          <rect x="472" y="198" width="40" height="40"></rect>
-                          <rect x="314" y="40" width="40" height="40"></rect>
-                          <rect x="472" y="120" width="40" height="40"></rect>
-                          <rect x="393" y="432" width="40" height="40"></rect>
-                          <path d="M472,472c22.091,0,40-17.909,40-40h-40V472z"></path>
-                          <rect x="393" y="40" width="40" height="40"></rect>
-                      </g>
-                    </g>
-                  </g>
-                                <g>
-                  </g>
-                                <g>
-                  </g>
-                                <g>
-                  </g>
-                                <g>
-                  </g>
-                                <g>
-                  </g>
-                                <g>
-                  </g>
-                                <g>
-                  </g>
-                                <g>
-                  </g>
-                                <g>
-                  </g>
-                                <g>
-                  </g>
-                                <g>
-                  </g>
-                                <g>
-                  </g>
-                                <g>
-                  </g>
-                                <g>
-                  </g>
-                                <g>
-                  </g>
-                </svg>
+        <div>
+            <input type="text" size="40" style="width: 100%;display: block;
+    margin-right: auto;
+    margin-left: auto; text-align: center" class="searchbox-ID" id="shopIDSearch"
+                   placeholder="Enter a Shop Name or URL">
 
-                        </div>
-                        <h6>
-                            High Resolution
-                        </h6>
-                    </div>
-                    <div class="detail-box">
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                            do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                            Ut enim ad minim veniam
-                        </p>
-                    </div>
-                </div>
-            </div>
+
+            <script type="text/javascript">
+
+                var shop_ID_node = document.getElementsByClassName("searchbox-ID")[0];
+                shop_ID_node.addEventListener("keyup", function (event) {
+                    if (event.key === "Enter") {
+
+                        var shopUrl = '';
+                        var search = document.querySelector("#shopIDSearch").value
+                        if (search.indexOf('.com') != -1) {
+                            shopUrl = search;
+                        } else {
+                            shopUrl = 'https://www.etsy.com/shop/' + search
+                        }
+
+
+                        getShopID(shopUrl);
+                        setTimeout(function () {
+                            $(".shop-id-holder").slideDown("slow")
+                        }, 1000);
+
+                    }
+                });
+
+
+            </script>
+
         </div>
     </div>
-    <div class="d-flex justify-content-center">
-        <a href="">
-            Read More
-        </a>
+
+
+    <div class="shop-id-holder" style="margin-top:2%;display:none;">
+        <div class="heading_container">
+            <h3 style="width: 100%;display: block;margin-right: auto;margin-left: auto;text-align: center;color: #8547ca;">
+                What is my Etsy Shop ID?</h3>
+        </div>
     </div>
 </section>
+
+<script type="text/javascript">
+    // var promise = Promise.resolve(ajaxPull());
+    //
+    // promise.then(function(val) {
+    //     console.log(val);
+    // });
+    function getShopID(url) {
+        $(".shop-id-holder").slideUp("slow")
+        const xhttp = new XMLHttpRequest();
+        var response = ''
+        // Define a callback function
+        xhttp.onload = function () {
+            //console.log(xhttp.responseText)
+            //var as = $(xhttp.responseText).find("a")
+            var res = xhttp.responseText;
+            if (res.indexOf('recipient_id=') != -1) {
+                var start = res.indexOf('recipient_id=') + 13
+                var shop_id = res.substring(start, res.indexOf('\"', start))
+                document.querySelector("body > section:nth-child(3) > div.shop-id-holder > div > h3").textContent = shop_id;
+            } else {
+                document.querySelector("body > section:nth-child(3) > div.shop-id-holder > div > h3").textContent = 'invalid name or url';
+            }
+
+
+        };
+        // Send a request
+        xhttp.open("GET", "/pull?url=" + url);
+        xhttp.send();
+
+    }
+
+
+</script>
 
 <!-- end feature section -->
 
 <!-- download section -->
 
-<section class="download_section layout_padding-bottom">
+<!--<section class="download_section layout_padding-bottom">
     <div class="container">
         <div class="heading_container">
             <h2>
@@ -676,7 +1491,7 @@
 <!-- end download section -->
 
 <!-- about section -->
-<section class="about_section layout_padding">
+<!--<section class="about_section layout_padding">
     <div class="container">
         <div class="heading_container d-flex justify-content-lg-start">
             <h2>
@@ -712,7 +1527,7 @@
 <!-- end about section -->
 
 <!-- subscribe section -->
-<section class="subscribe_section layout_padding">
+<!--<section class="subscribe_section layout_padding">
     <div class="container">
         <div class="heading_container">
             <h2>
@@ -731,7 +1546,7 @@
 <!-- end subscribe section -->
 
 <!-- client section -->
-<section class="client_section layout_margin">
+<!--<section class="client_section layout_margin">
     <div class="container">
         <div class="heading_container">
             <h2>
@@ -772,7 +1587,7 @@
 <!-- end client section -->
 
 <!-- contact section -->
-<section class="contact_section layout_padding">
+<!--<section class="contact_section layout_padding">
     <div class="container">
         <div class="d-flex ">
             <h2>
@@ -822,20 +1637,22 @@
 <section class="info_section layout_padding-top">
     <div class="info_logo-box">
         <h2>
-            UXOS
+            OD.io
         </h2>
     </div>
-    <div class="container layout_padding2">
+    <div class="container layout_padding2" style="margin: auto;text-align: center">
         <div class="row">
-            <div class="col-md-3">
+            <div class="col-md-3" style="margin: auto">
                 <h5>
-                    About Us
+                    About This Project
                 </h5>
                 <p>
-                    dolor sit amet, consectetur magna aliqua. Ut enim ad minim veniam, quisdotempor incididunt r
+                    This project was created to show the capabilities of
+                    a backend scraping software to gain relevant keyword information for
+                    Etsy listings
                 </p>
             </div>
-            <div class="col-md-3">
+            <!--<div class="col-md-3">
                 <h5>
                     Useful Link
                 </h5>
@@ -907,27 +1724,64 @@
 </section>
 
 <!-- end info section -->
-<!-- footer section -->
-<section class="container-fluid footer_section">
-    <p>
-        © 2019 All Rights Reserved. Design by
-        <a href="https://html.design/">Free Html Templates</a>
-    </p>
+            <!-- footer section -->
+            <section class="container-fluid footer_section">
+                <p>
+                    © 2022 Shane ODonnell
+                </p>
+            </section>
+            <!-- footer section -->
+
+            <script type="text/javascript" src="index_files/jquery-3.4.1.min.js"></script>
+            <script type="text/javascript" src="index_files/bootstrap.js"></script>
+
+            <script>
+                function openNav() {
+                    document.getElementById("myNav").classList.toggle("menu_width");
+                    document
+                        .querySelector(".custom_menu-btn")
+                        .classList.toggle("menu_btn-style");
+                }
+            </script>
+
+
+            <script>
+                (function () {
+                    var ws = new WebSocket('ws://' + window.location.host +
+                        '/jb-server-page?reloadMode=RELOAD_ON_SAVE&' +
+                        'referrer=' + encodeURIComponent(window.location.pathname));
+                    ws.onmessage = function (msg) {
+                        if (msg.data === 'reload') {
+                            window.location.reload();
+                        }
+                        if (msg.data.startsWith('update-css ')) {
+                            var messageId = msg.data.substring(11);
+                            var links = document.getElementsByTagName('link');
+                            for (var i = 0; i < links.length; i++) {
+                                var link = links[i];
+                                if (link.rel !== 'stylesheet') continue;
+                                var clonedLink = link.cloneNode(true);
+                                var newHref = link.href.replace(/(&|\?)jbUpdateLinksId=\d+/, "$1jbUpdateLinksId=" + messageId);
+                                if (newHref !== link.href) {
+                                    clonedLink.href = newHref;
+                                } else {
+                                    var indexOfQuest = newHref.indexOf('?');
+                                    if (indexOfQuest >= 0) {
+                                        // to support ?foo#hash
+                                        clonedLink.href = newHref.substring(0, indexOfQuest + 1) + 'jbUpdateLinksId=' + messageId + '&' +
+                                            newHref.substring(indexOfQuest + 1);
+                                    } else {
+                                        clonedLink.href += '?' + 'jbUpdateLinksId=' + messageId;
+                                    }
+                                }
+                                link.replaceWith(clonedLink);
+                            }
+                        }
+                    };
+                })();
+            </script>
+        </div>
+    </div>
 </section>
-<!-- footer section -->
-
-<script type="text/javascript" src="index_files/jquery-3.4.1.min.js"></script>
-<script type="text/javascript" src="index_files/bootstrap.js"></script>
-
-<script>
-    function openNav() {
-        document.getElementById("myNav").classList.toggle("menu_width");
-        document
-            .querySelector(".custom_menu-btn")
-            .classList.toggle("menu_btn-style");
-    }
-</script>
-
-
 </body>
 </html>

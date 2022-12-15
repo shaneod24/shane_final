@@ -1,0 +1,1639 @@
+<html xmlns="http://www.w3.org/1999/html">
+<head>
+    <style>
+
+
+        p a {
+            text-decoration: none;
+            font-weight: bold;
+            color: #666;
+        }
+
+        p a:hover {
+            color: #8c60bd;
+        }
+
+        #loader {
+            display: none;
+            width: 80px;
+            height: 40px;
+            position: relative;
+            top: 50%;
+            left: 50%;
+            margin: 20px -40px;
+            z-index: 1000;
+        }
+
+        .lightsaber {
+            position: absolute;
+            width: 4px;
+            height: 12px;
+            background-color: #666;
+            border-radius: 1px;
+            bottom: 0;
+        }
+
+        .lightsaber.ls-left {
+            left: 0;
+        }
+
+        .lightsaber.ls-right {
+            right: 0;
+        }
+
+        .lightsaber:before {
+            position: absolute;
+            content: ' ';
+            display: block;
+            width: 2px;
+            height: 25px;
+            max-height: 1px;
+            left: 1px;
+            top: 1px;
+            background-color: #fff;
+            border-radius: 1px;
+            -webkit-transform: rotateZ(180deg);
+            transform: rotateZ(180deg);
+            -webkit-transform-origin: center top;
+            -ms-transform-origin: center top;
+            transform-origin: center top;
+        }
+
+        .lightsaber:after {
+            position: absolute;
+            content: ' ';
+            display: block;
+            width: 2px;
+            height: 2px;
+            left: 1px;
+            top: 4px;
+            background-color: #fff;
+            border-radius: 50%;
+        }
+
+        .ls-particles {
+            position: absolute;
+            left: 42px;
+            top: 10px;
+            width: 1px;
+            height: 5px;
+            background-color: rgb(51, 51, 51, 0);
+            -webkit-transform: rotateZ(0deg);
+            transform: rotateZ(0deg);
+        }
+
+
+        .lightsaber.ls-green:before {
+            -webkit-animation: showlightgreen 2s ease-in-out infinite 1s;
+            animation: showlightgreen 2s ease-in-out infinite 1s;
+        }
+
+        .lightsaber.ls-red:before {
+            -webkit-animation: showlightred 2s ease-in-out infinite 1s;
+            animation: showlightred 2s ease-in-out infinite 1s;
+        }
+
+
+        .lightsaber.ls-left {
+            -webkit-animation: fightleft 2s ease-in-out infinite 1s;
+            animation: fightleft 2s ease-in-out infinite 1s;
+        }
+
+        .lightsaber.ls-right {
+            -webkit-animation: fightright 2s ease-in-out infinite 1s;
+            animation: fightright 2s ease-in-out infinite 1s;
+        }
+
+        .ls-particles.ls-part-1 {
+            -webkit-animation: particles1 2s ease-out infinite 1s;
+            animation: particles1 2s ease-out infinite 1s;
+        }
+
+        .ls-particles.ls-part-2 {
+            -webkit-animation: particles2 2s ease-out infinite 1s;
+            animation: particles2 2s ease-out infinite 1s;
+        }
+
+        .ls-particles.ls-part-3 {
+            -webkit-animation: particles3 2s ease-out infinite 1s;
+            animation: particles3 2s ease-out infinite 1s;
+        }
+
+        .ls-particles.ls-part-4 {
+            -webkit-animation: particles4 2s ease-out infinite 1s;
+            animation: particles4 2s ease-out infinite 1s;
+        }
+
+        .ls-particles.ls-part-5 {
+            -webkit-animation: particles5 2s ease-out infinite 1s;
+            animation: particles5 2s ease-out infinite 1s;
+        }
+
+        @-webkit-keyframes showlightgreen {
+            0% {
+                max-height: 0;
+                box-shadow: 0 0 0 0 #8c60bd;
+            }
+
+            5% {
+                box-shadow: 0 0 4px 2px #8c60bd;
+            }
+
+            10% {
+                max-height: 22px;
+            }
+
+            80% {
+                max-height: 22px;
+            }
+
+            85% {
+                box-shadow: 0 0 4px 2px #8c60bd;
+            }
+
+            100% {
+                max-height: 0;
+                box-shadow: 0 0 0 0 #8c60bd;
+            }
+        }
+
+        @-webkit-keyframes showlightred {
+            0% {
+                max-height: 0;
+                box-shadow: 0 0 0 0 #8c60bd;
+            }
+
+            20% {
+                box-shadow: 0 0 4px 2px #8c60bd;
+            }
+
+            25% {
+                max-height: 22px;
+            }
+
+            80% {
+                max-height: 22px;
+            }
+
+            85% {
+                box-shadow: 0 0 4px 2px #8c60bd;
+            }
+
+            100% {
+                max-height: 0;
+                box-shadow: 0 0 0 0 #8c60bd;
+            }
+        }
+
+        @-webkit-keyframes fightleft {
+            0% {
+                -webkit-transform: rotateZ(0deg);
+                transform: rotateZ(0deg);
+                left: 0;
+                bottom: 0;
+            }
+
+            30% {
+                -webkit-transform: rotateZ(0deg);
+                transform: rotateZ(0deg);
+                bottom: 0;
+            }
+
+            40% {
+                -webkit-transform: rotateZ(45deg);
+                transform: rotateZ(45deg);
+                left: 0;
+                bottom: 2px;
+            }
+
+            45% {
+                -webkit-transform: rotateZ(65deg);
+                transform: rotateZ(65deg);
+                left: 0;
+            }
+
+            65% {
+                -webkit-transform: rotateZ(410deg);
+                transform: rotateZ(410deg);
+                left: 30px;
+                bottom: 10px;
+            }
+
+            95% {
+                -webkit-transform: rotateZ(410deg);
+                transform: rotateZ(410deg);
+                left: 0;
+                bottom: 0;
+            }
+
+            100% {
+                -webkit-transform: rotateZ(360deg);
+                transform: rotateZ(360deg);
+                left: 0;
+                bottom: 0;
+            }
+        }
+
+        @-webkit-keyframes fightright {
+            0% {
+                -webkit-transform: rotateZ(0deg);
+                transform: rotateZ(0deg);
+                right: 0;
+                bottom: 0;
+            }
+
+            30% {
+                -webkit-transform: rotateZ(0deg);
+                transform: rotateZ(0deg);
+                bottom: 0;
+            }
+
+            45% {
+                -webkit-transform: rotateZ(-45deg);
+                transform: rotateZ(-45deg);
+                right: 0;
+                bottom: 2px;
+            }
+
+            50% {
+                -webkit-transform: rotateZ(-65deg);
+                transform: rotateZ(-65deg);
+                right: 0;
+            }
+
+            68% {
+                -webkit-transform: rotateZ(-410deg);
+                transform: rotateZ(-410deg);
+                right: 27px;
+                bottom: 13px;
+            }
+
+            95% {
+                -webkit-transform: rotateZ(-410deg);
+                transform: rotateZ(-410deg);
+                right: 0;
+                bottom: 0;
+            }
+
+            100% {
+                -webkit-transform: rotateZ(-360deg);
+                transform: rotateZ(-360deg);
+                right: 0;
+                bottom: 0;
+            }
+        }
+
+        @-webkit-keyframes particles1 {
+            0% {
+                background-color: rgba(51, 51, 51, 0);
+                -webkit-transform: rotateZ(35deg) translateY(0px);
+                transform: rotateZ(35deg) translateY(0px);
+            }
+
+            63% {
+                background-color: rgba(51, 51, 51, 0);
+                -webkit-transform: rotateZ(35deg) translateY(0px);
+                transform: rotateZ(35deg) translateY(0px);
+            }
+
+            64% {
+                background-color: rgba(51, 51, 51, 1);
+                -webkit-transform: rotateZ(35deg) translateY(0px);
+                transform: rotateZ(35deg) translateY(0px);
+            }
+
+            100% {
+                background-color: rgba(51, 51, 51, 0);
+                -webkit-transform: rotateZ(35deg) translateY(-30px);
+                transform: rotateZ(35deg) translateY(-30px);
+            }
+        }
+
+        @-webkit-keyframes particles2 {
+            0% {
+                background-color: rgba(51, 51, 51, 0);
+                -webkit-transform: rotateZ(-65deg) translateY(0px);
+                transform: rotateZ(-65deg) translateY(0px);
+            }
+
+            63% {
+                background-color: rgba(51, 51, 51, 0);
+                -webkit-transform: rotateZ(-65deg) translateY(0px);
+                transform: rotateZ(-65deg) translateY(0px);
+            }
+
+            64% {
+                background-color: rgba(51, 51, 51, 1);
+                -webkit-transform: rotateZ(-65deg) translateY(0px);
+                transform: rotateZ(-65deg) translateY(0px);
+            }
+
+            95% {
+                background-color: rgba(51, 51, 51, 0);
+                -webkit-transform: rotateZ(-65deg) translateY(-40px);
+                transform: rotateZ(-65deg) translateY(-40px);
+            }
+
+            100% {
+                background-color: rgba(51, 51, 51, 0);
+                -webkit-transform: rotateZ(-65deg) translateY(-40px);
+                transform: rotateZ(-65deg) translateY(-40px);
+            }
+        }
+
+        @-webkit-keyframes particles3 {
+            0% {
+                background-color: rgba(51, 51, 51, 0);
+                -webkit-transform: rotateZ(-75deg) translateY(0px);
+                transform: rotateZ(-75deg) translateY(0px);
+            }
+
+            63% {
+                background-color: rgba(51, 51, 51, 0);
+                -webkit-transform: rotateZ(-75deg) translateY(0px);
+                transform: rotateZ(-75deg) translateY(0px);
+            }
+
+            64% {
+                background-color: rgba(51, 51, 51, 1);
+                -webkit-transform: rotateZ(-75deg) translateY(0px);
+                transform: rotateZ(-75deg) translateY(0px);
+            }
+
+            97% {
+                background-color: rgba(51, 51, 51, 0);
+                -webkit-transform: rotateZ(-75deg) translateY(-35px);
+                transform: rotateZ(-75deg) translateY(-35px);
+            }
+
+            100% {
+                background-color: rgba(51, 51, 51, 0);
+                -webkit-transform: rotateZ(-75deg) translateY(-35px);
+                transform: rotateZ(-75deg) translateY(-35px);
+            }
+        }
+
+        @-webkit-keyframes particles4 {
+            0% {
+                background-color: rgba(51, 51, 51, 0);
+                -webkit-transform: rotateZ(-25deg) translateY(0px);
+                transform: rotateZ(-25deg) translateY(0px);
+            }
+
+            63% {
+                background-color: rgba(51, 51, 51, 0);
+                -webkit-transform: rotateZ(-25deg) translateY(0px);
+                transform: rotateZ(-25deg) translateY(0px);
+            }
+
+            64% {
+                background-color: rgba(51, 51, 51, 1);
+                -webkit-transform: rotateZ(-25deg) translateY(0px);
+                transform: rotateZ(-25deg) translateY(0px);
+            }
+
+            97% {
+                background-color: rgba(51, 51, 51, 0);
+                -webkit-transform: rotateZ(-25deg) translateY(-30px);
+                transform: rotateZ(-25deg) translateY(-30px);
+            }
+
+            100% {
+                background-color: rgba(51, 51, 51, 0);
+                -webkit-transform: rotateZ(-25deg) translateY(-30px);
+                transform: rotateZ(-25deg) translateY(-30px);
+            }
+        }
+
+        @-webkit-keyframes particles5 {
+            0% {
+                background-color: rgba(51, 51, 51, 0);
+                -webkit-transform: rotateZ(65deg) translateY(0px);
+                transform: rotateZ(65deg) translateY(0px);
+            }
+
+            63% {
+                background-color: rgba(51, 51, 51, 0);
+                -webkit-transform: rotateZ(65deg) translateY(0px);
+                transform: rotateZ(65deg) translateY(0px);
+            }
+
+            64% {
+                background-color: rgba(51, 51, 51, 1);
+                -webkit-transform: rotateZ(65deg) translateY(0px);
+                transform: rotateZ(65deg) translateY(0px);
+            }
+
+            97% {
+                background-color: rgba(51, 51, 51, 0);
+                -webkit-transform: rotateZ(65deg) translateY(-35px);
+                transform: rotateZ(65deg) translateY(-35px);
+            }
+
+            100% {
+                background-color: rgba(51, 51, 51, 0);
+                -webkit-transform: rotateZ(65deg) translateY(-35px);
+                transform: rotateZ(65deg) translateY(-35px);
+            }
+        }
+
+        @keyframes showlightgreen {
+            0% {
+                max-height: 0;
+                box-shadow: 0 0 0 0 #8c60bd;
+            }
+
+            5% {
+                box-shadow: 0 0 4px 2px #8c60bd;
+            }
+
+            10% {
+                max-height: 22px;
+            }
+
+            80% {
+                max-height: 22px;
+            }
+
+            85% {
+                box-shadow: 0 0 4px 2px #8c60bd;
+            }
+
+            100% {
+                max-height: 0;
+                box-shadow: 0 0 0 0 #8c60bd;
+            }
+        }
+
+        @keyframes showlightred {
+            0% {
+                max-height: 0;
+                box-shadow: 0 0 0 0 #8c60bd;
+            }
+
+            20% {
+                box-shadow: 0 0 4px 2px #8c60bd;
+            }
+
+            25% {
+                max-height: 22px;
+            }
+
+            80% {
+                max-height: 22px;
+            }
+
+            85% {
+                box-shadow: 0 0 4px 2px #8c60bd;
+            }
+
+            100% {
+                max-height: 0;
+                box-shadow: 0 0 0 0 #8c60bd;
+            }
+        }
+
+        @keyframes fightleft {
+            0% {
+                -webkit-transform: rotateZ(0deg);
+                transform: rotateZ(0deg);
+                left: 0;
+                bottom: 0;
+            }
+
+            30% {
+                -webkit-transform: rotateZ(0deg);
+                transform: rotateZ(0deg);
+                bottom: 0;
+            }
+
+            40% {
+                -webkit-transform: rotateZ(45deg);
+                transform: rotateZ(45deg);
+                left: 0;
+                bottom: 2px;
+            }
+
+            45% {
+                -webkit-transform: rotateZ(65deg);
+                transform: rotateZ(65deg);
+                left: 0;
+            }
+
+            65% {
+                -webkit-transform: rotateZ(410deg);
+                transform: rotateZ(410deg);
+                left: 30px;
+                bottom: 10px;
+            }
+
+            95% {
+                -webkit-transform: rotateZ(410deg);
+                transform: rotateZ(410deg);
+                left: 0;
+                bottom: 0;
+            }
+
+            100% {
+                -webkit-transform: rotateZ(360deg);
+                transform: rotateZ(360deg);
+                left: 0;
+                bottom: 0;
+            }
+        }
+
+        @keyframes fightright {
+            0% {
+                -webkit-transform: rotateZ(0deg);
+                transform: rotateZ(0deg);
+                right: 0;
+                bottom: 0;
+            }
+
+            30% {
+                -webkit-transform: rotateZ(0deg);
+                transform: rotateZ(0deg);
+                bottom: 0;
+            }
+
+            45% {
+                -webkit-transform: rotateZ(-45deg);
+                transform: rotateZ(-45deg);
+                right: 0;
+                bottom: 2px;
+            }
+
+            50% {
+                -webkit-transform: rotateZ(-65deg);
+                transform: rotateZ(-65deg);
+                right: 0;
+            }
+
+            68% {
+                -webkit-transform: rotateZ(-410deg);
+                transform: rotateZ(-410deg);
+                right: 27px;
+                bottom: 13px;
+            }
+
+            95% {
+                -webkit-transform: rotateZ(-410deg);
+                transform: rotateZ(-410deg);
+                right: 0;
+                bottom: 0;
+            }
+
+            100% {
+                -webkit-transform: rotateZ(-360deg);
+                transform: rotateZ(-360deg);
+                right: 0;
+                bottom: 0;
+            }
+        }
+
+        @keyframes particles1 {
+            0% {
+                background-color: rgba(51, 51, 51, 0);
+                -webkit-transform: rotateZ(35deg) translateY(0px);
+                transform: rotateZ(35deg) translateY(0px);
+            }
+
+            63% {
+                background-color: rgba(51, 51, 51, 0);
+                -webkit-transform: rotateZ(35deg) translateY(0px);
+                transform: rotateZ(35deg) translateY(0px);
+            }
+
+            64% {
+                background-color: rgba(51, 51, 51, 1);
+                -webkit-transform: rotateZ(35deg) translateY(0px);
+                transform: rotateZ(35deg) translateY(0px);
+            }
+
+            100% {
+                background-color: rgba(51, 51, 51, 0);
+                -webkit-transform: rotateZ(35deg) translateY(-30px);
+                transform: rotateZ(35deg) translateY(-30px);
+            }
+        }
+
+        @keyframes particles2 {
+            0% {
+                background-color: rgba(51, 51, 51, 0);
+                -webkit-transform: rotateZ(-65deg) translateY(0px);
+                transform: rotateZ(-65deg) translateY(0px);
+            }
+
+            63% {
+                background-color: rgba(51, 51, 51, 0);
+                -webkit-transform: rotateZ(-65deg) translateY(0px);
+                transform: rotateZ(-65deg) translateY(0px);
+            }
+
+            64% {
+                background-color: rgba(51, 51, 51, 1);
+                -webkit-transform: rotateZ(-65deg) translateY(0px);
+                transform: rotateZ(-65deg) translateY(0px);
+            }
+
+            95% {
+                background-color: rgba(51, 51, 51, 0);
+                -webkit-transform: rotateZ(-65deg) translateY(-40px);
+                transform: rotateZ(-65deg) translateY(-40px);
+            }
+
+            100% {
+                background-color: rgba(51, 51, 51, 0);
+                -webkit-transform: rotateZ(-65deg) translateY(-40px);
+                transform: rotateZ(-65deg) translateY(-40px);
+            }
+        }
+
+        @keyframes particles3 {
+            0% {
+                background-color: rgba(51, 51, 51, 0);
+                -webkit-transform: rotateZ(-75deg) translateY(0px);
+                transform: rotateZ(-75deg) translateY(0px);
+            }
+
+            63% {
+                background-color: rgba(51, 51, 51, 0);
+                -webkit-transform: rotateZ(-75deg) translateY(0px);
+                transform: rotateZ(-75deg) translateY(0px);
+            }
+
+            64% {
+                background-color: rgba(51, 51, 51, 1);
+                -webkit-transform: rotateZ(-75deg) translateY(0px);
+                transform: rotateZ(-75deg) translateY(0px);
+            }
+
+            97% {
+                background-color: rgba(51, 51, 51, 0);
+                -webkit-transform: rotateZ(-75deg) translateY(-35px);
+                transform: rotateZ(-75deg) translateY(-35px);
+            }
+
+            100% {
+                background-color: rgba(51, 51, 51, 0);
+                -webkit-transform: rotateZ(-75deg) translateY(-35px);
+                transform: rotateZ(-75deg) translateY(-35px);
+            }
+        }
+
+        @keyframes particles4 {
+            0% {
+                background-color: rgba(51, 51, 51, 0);
+                -webkit-transform: rotateZ(-25deg) translateY(0px);
+                transform: rotateZ(-25deg) translateY(0px);
+            }
+
+            63% {
+                background-color: rgba(51, 51, 51, 0);
+                -webkit-transform: rotateZ(-25deg) translateY(0px);
+                transform: rotateZ(-25deg) translateY(0px);
+            }
+
+            64% {
+                background-color: rgba(51, 51, 51, 1);
+                -webkit-transform: rotateZ(-25deg) translateY(0px);
+                transform: rotateZ(-25deg) translateY(0px);
+            }
+
+            97% {
+                background-color: rgba(51, 51, 51, 0);
+                -webkit-transform: rotateZ(-25deg) translateY(-30px);
+                transform: rotateZ(-25deg) translateY(-30px);
+            }
+
+            100% {
+                background-color: rgba(51, 51, 51, 0);
+                -webkit-transform: rotateZ(-25deg) translateY(-30px);
+                transform: rotateZ(-25deg) translateY(-30px);
+            }
+        }
+
+        @keyframes particles5 {
+            0% {
+                background-color: rgba(51, 51, 51, 0);
+                -webkit-transform: rotateZ(65deg) translateY(0px);
+                transform: rotateZ(65deg) translateY(0px);
+            }
+
+            63% {
+                background-color: rgba(51, 51, 51, 0);
+                -webkit-transform: rotateZ(65deg) translateY(0px);
+                transform: rotateZ(65deg) translateY(0px);
+            }
+
+            64% {
+                background-color: rgba(51, 51, 51, 1);
+                -webkit-transform: rotateZ(65deg) translateY(0px);
+                transform: rotateZ(65deg) translateY(0px);
+            }
+
+            97% {
+                background-color: rgba(51, 51, 51, 0);
+                -webkit-transform: rotateZ(65deg) translateY(-35px);
+                transform: rotateZ(65deg) translateY(-35px);
+            }
+
+            100% {
+                background-color: rgba(51, 51, 51, 0);
+                -webkit-transform: rotateZ(65deg) translateY(-35px);
+                transform: rotateZ(65deg) translateY(-35px);
+            }
+        }
+    </style>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <!-- Basic -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Site Metas -->
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Etsy Seller Tools by OD.io</title>
+
+    <!-- slider stylesheet -->
+    <link rel="stylesheet" type="text/css" href="PrototypePage_files/owl.carousel.min.css">
+
+    <!-- bootstrap core css -->
+    <link rel="stylesheet" type="text/css" href="PrototypePage_files/bootstrap.css">
+
+    <!-- fonts style -->
+    <link href="PrototypePage_files/css.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="PrototypePage_files/style.css" rel="stylesheet">
+    <!-- responsive style -->
+    <link href="PrototypePage_files/responsive.css" rel="stylesheet">
+    <script src="PrototypePage_files/prompt_002_002.js"></script>
+    <script src="PrototypePage_files/prompt_002_002.js"></script>
+    <script src="PrototypePage_files/prompt_002_002.js"></script>
+    <script src="PrototypePage_files/prompt_002_002.js"></script>
+    <script src="PrototypePage_files/prompt_002_002.js"></script>
+    <script src="PrototypePage_files/prompt_002_002.js"></script>
+    <script src="PrototypePage_files/prompt_002_002.js"></script>
+    <script src="PrototypePage_files/prompt_002_003_002.js"></script>
+    <script src="PrototypePage_files/prompt_002_003_002.js"></script>
+    <script src="PrototypePage_files/prompt_002_003_002.js"></script>
+    <script src="PrototypePage_files/prompt_002_003_002.js"></script>
+    <script src="PrototypePage_files/jquery.min.js"></script>
+    <script src="PrototypePage_files/keywordcrawler.js" type="text/javascript"></script>
+    <script src="PrototypePage_files/shopID.js" type="text/javascript"></script>
+    <script src="PrototypePage_files/prompt_002_003_002.js"></script>
+    <script src="PrototypePage_files/prompt_002_004_002.js"></script>
+    <script src="PrototypePage_files/prompt_002_004_003.js"></script>
+    <script src="PrototypePage_files/prompt_002_004_004.js"></script>
+    <script src="PrototypePage_files/prompt_002_004_005_002.js"></script>
+    <script src="PrototypePage_files/prompt_002_004_005.js"></script>
+    <script src="PrototypePage_files/prompt_002_004.js"></script>
+    <script src="PrototypePage_files/prompt_002_005.js"></script>
+    <script src="PrototypePage_files/prompt_002_003_003.js"></script>
+    <script src="PrototypePage_files/prompt_003_002.js"></script>
+    <script src="PrototypePage_files/prompt_003.js"></script>
+    <script src="PrototypePage_files/prompt_002_003_004.js"></script>
+    <script src="PrototypePage_files/prompt_002_003.js"></script>
+    <script src="PrototypePage_files/prompt_002.js"></script>
+    <script src="PrototypePage_files/prompt.js"></script>
+</head>
+
+<body>
+
+<script type="text/javascript">
+
+    // getListingInfo().then(result => {
+    //     alert(result); // {"metadata": "for: test.png"}
+    // });
+
+
+</script>
+
+
+<div class="hero_area" style="height: auto;">
+    <!-- header section strats -->
+    <header class="header_section" id="headerTop" style="margin-bottom:0px">
+        <script>
+            if (window.navigator.userAgent.indexOf('iPhone') != -1) {
+                document.getElementById("headerTop").style.marginBottom = "30%";
+            }
+        </script>
+        <div class="container-fluid">
+            <nav class="navbar navbar-expand-lg custom_nav-container">
+                <a class="navbar-brand" href="http://localhost:3000/index.html">
+                    <span>Etsy Seller Tools</span>
+                </a>
+
+                <div class="navbar-collapse" id="">
+                    <div class="custom_menu-btn">
+                        <button onclick="openNav()">
+                            <span class="s-1"> </span>
+                            <span class="s-2"> </span>
+                            <span class="s-3"> </span>
+                        </button>
+                    </div>
+                    <div id="myNav" class="overlay">
+                        <div class="overlay-content">
+                            <a href="/index.html">Home</a><a href="/PrototypePage.html">Prototype Page</a><a
+                                href="/FinalReport.html">Final Report Page</a><a
+                                href="https://dronediscount.myshopify.com/">Previous Phases</a>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <!-- end header section -->
+    <!-- slider section -->
+
+
+    <!-- end slider section -->
+</div><!-- feature section -->
+<section class="feature_section layout_padding2 layout_margin">
+    <div class="container">
+        <div class="heading_container">
+            <h2 class="titleWidget">Redesign Prototypes Page<br></h2>
+        </div>
+        <div><p style="text-align: center;">As previously mentioned, the
+            prototype has gone through numerous prototyping and testing phases. This
+            was a major part of the formative evaluation process during development
+            to make sure that the usability was fitting to all stakeholders. The
+            stakeholder group that I wanted to focus most on was the novice user
+            group given that I felt this would represent the majority. I wanted to
+            test to see if users who had average online UI backgrounds could
+            navigate a number of different systems that I had set up. Given that
+            this is the first system of its kind that has been applied to this
+            marketplace, I figured I had a lot of flexibility in trying to develop
+            mental models. However, what I ran into the most was the fact that
+            proceduralization does not mean optimization. More specifically, users
+            want to generate results rather than learn a system. For that reason, I
+            wanted to make the system as easy as possible, and I believe I achieved
+            that. In reality, my system is sort of a proxy to the goal of gaining
+            more revenue because it falls under numerous layers of the issue. More
+            specifically, the layers being: I need more revenue, I need more views
+            for more sales, I need to figure out how to get more views, I need
+            keywords to get more views, I need to know what the best keywords are.
+            Therefore, users have a number of problems to conquer and iterate
+            through before arriving at my system.</p></div>
+        <div class="heading_container">
+            <h2 class="titleWidget">Prototype One (Low Fidelity)<br></h2>
+        </div>
+        <div>
+            <div>
+                <img src="PrototypePage_files/primInput.png" style="max-width: 50%;margin: auto;display: block;">
+                <p style="margin: auto;text-align: center;width: 50%;margin-bottom: 10px;margin-top: 10px;">
+                    (Input)
+
+                </p></div>
+            <div>
+                <img style="max-width: 50%;margin: auto;display: block;" src="PrototypePage_files/PrimOutput.png">
+                <p style="margin: auto;text-align: center;width: 50%;margin-bottom: 10px;margin-top: 10px;">
+                    (Output)
+
+                </p></div>
+            <div>
+
+            </div>
+            <p style="text-align: center;">For this first
+                prototype, I decided to make a very quick demo of the system. For this, I
+                just wanted to see whether or not the user (in the absence of
+                documentation) could understand how to get a result out of the system.
+                There was no real functionality yet, the system did not actually parse
+                the internet for the keywords. Rather, it just returned to the user a
+                dictionary of phrases based off what was entered into the initial input.
+                This is what I would consider to be an “Off-the-Shelf prototype which
+                would allow me to gauge requirements for the UX/UI and gave me the
+                ability to view an activity and conduct a feasible study. I used the
+                “think out loud” method of testing here (and for many of my tests) in
+                order to gauge the reaction of this primitive prototype. I also
+                incorporated a user background questionnaire for four of my classmates
+                and friends with the questions below.
+            </p><h4>Questions</h4>
+            <table>
+                <tbody>
+                <tr>
+                    <td>1. On a scale of 1-10 how savvy would you say you are at navigating HTML websites?</td>
+                </tr>
+                <tr>
+                    <td>2. On a scale of 1-10 how much knowledge do you have about web servers?</td>
+                </tr>
+                <tr>
+                    <td>3. Have you ever sold anything online?</td>
+                </tr>
+                <tr>
+                    <td>4. On a scale of 1-10 how entrepreneurial are you?</td>
+                </tr>
+                <tr>
+                    <td>5. Have you ever used Etsy before</td>
+                </tr>
+                </tbody>
+            </table>
+            <h4>Results</h4>
+            <table style="margin-top: 10px;">
+                <tbody>
+                <tr>
+                    <td>1. Average: 8.5 Commentary: given that the people around me are
+                        college students, I guessed that this would be close to the average
+                        anyways
+                    </td>
+                </tr>
+                <tr>
+                    <td>2. Average: 6 Commentary: It is not overly common for people
+                        outside of IST to have extensive knowledge of this subject, so I was not
+                        surprised by this either
+                    </td>
+                </tr>
+                <tr>
+                    <td>3. Result: All said yes Commentary: I was surprised by this that
+                        all of the subjects had sold something online which gives me promise for
+                        the upcoming questions
+                    </td>
+                </tr>
+                <tr>
+                    <td>4. Average: 7 Commentary: I would say this is a pretty solid score and not one that I was
+                        necessarily expecting
+                    </td>
+                </tr>
+                <tr>
+                    <td>5. Result: All said yes Commentary: I was not surprised by this
+                        answer given how far of a reach the company has. This is partially why I
+                        chose this integration
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <p style="text-align: center;margin-top: 10px;">What I
+                gathered from this first rendition was the fact that the user design was
+                not overly helpful in terms of recognizing functionality, and the
+                results did not feel very useful. Despite many of the users never
+                selling on Etsy, it seemed that without a fuller implementation, my test
+                was not overly conclusive. However, the main takeaway from this part
+                was the fact that I needed a better GUI user design and familiarity
+                would have to play a major role.</p></div>
+    </div>
+    <div class="container">
+        <div class="heading_container">
+            <h2 class="titleWidget">Prototype Two (High Fidelity)<br></h2>
+            <div>
+                <img style="max-width: 50%;margin: auto;display: block;" src="PrototypePage_files/input2.png">
+                <p style="margin: auto;text-align: center;width: 50%;margin-bottom: 10px;margin-top: 10px;">
+                    (Input)
+
+                </p></div>
+            <div>
+                <img style="max-width: 50%;margin: auto;display: block;" src="PrototypePage_files/out2.png">
+                <p style="margin: auto;text-align: center;width: 50%;margin-bottom: 10px;margin-top: 10px;">
+                    (Output)
+
+                </p></div>
+        </div>
+        <div><p style="text-align: center;">This second prototype was higher
+            fidelity which allowed for me to better gauge the user experience. On
+            the back end, this was a lot more fully functional with the ability to
+            scrape one of the top listings (with the goal being three). However, to
+            scrape one listing versus three actually turned out to be rather easy in
+            the end. I still gave the same questionaries to the test group, but I
+            carefully looked at the speak out loud reactions which were a lot more
+            helpful this time. The major reactions and takeaways were as follows.</p></div>
+        <div><h4 style="margin-top: 30px;">Key "Think-Out-Loud" Takeaways</h4>
+            <table>
+                <tbody>
+                <tr>
+                    <td>User: RJ - the search bar is unclear as to what should be put in and the result is not overly
+                        clear as to where it came from
+                    </td>
+                </tr>
+                <tr>
+                    <td>User: CJ - did not understand what was supposed to be put into the search bar (until I helped)
+                    </td>
+                </tr>
+                <tr>
+                    <td>User: Julia - did not understand what was supposed to be put into
+                        the search bar (until I helped) and did not know what result was for
+                    </td>
+                </tr>
+                <tr>
+                    <td>User: Patrick - was unable to access the system, uses Internet Explorer</td>
+                </tr>
+                <tr>
+                    <td>User: Coleman - understood what to search for and got result</td>
+                </tr>
+                </tbody>
+            </table>
+            <p style="text-align: center;margin-top: 20px;">The
+                conclusion that I made from this test was that I needed a more
+                interactive demo of the product as well as a clear showing of where the
+                data came from so that it could be trusted</p><h4 style="margin-top: 30px;">Questions (Same As
+                Before)</h4>
+            <table>
+                <tbody>
+                <tr>
+                    <td>1. On a scale of 1-10 how savvy would you say you are at navigating HTML websites?</td>
+                </tr>
+                <tr>
+                    <td>2. On a scale of 1-10 how much knowledge do you have about web servers?</td>
+                </tr>
+                <tr>
+                    <td>3. Have you ever sold anything online?</td>
+                </tr>
+                <tr>
+                    <td>4. On a scale of 1-10 how entrepreneurial are you?</td>
+                </tr>
+                <tr>
+                    <td>5. Have you ever used Etsy before</td>
+                </tr>
+                </tbody>
+            </table>
+            <h4>Results (generally Same As Before)</h4>
+            <table style="margin-top: 10px;">
+                <tbody>
+                <tr>
+                    <td>1. Average: 8 Commentary: given that the people around me are
+                        college students, I guessed that this would be close to the average
+                        anyways
+                    </td>
+                </tr>
+                <tr>
+                    <td>2. Average: 7 Commentary: It is not overly common for people
+                        outside of IST to have extensive knowledge of this subject, so I was not
+                        surprised by this either
+                    </td>
+                </tr>
+                <tr>
+                    <td>3. Result: All said yes Commentary: I was surprised by this that
+                        all of the subjects had sold something online which gives me promise for
+                        the upcoming questions
+                    </td>
+                </tr>
+                <tr>
+                    <td>4. Average: 8 Commentary: I would say this is a pretty solid score and not one that I was
+                        necessarily expecting
+                    </td>
+                </tr>
+                <tr>
+                    <td>5. Result: All said yes Commentary: I was not surprised by this
+                        answer given how far of a reach the company has. This is partially why I
+                        chose this integration
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+    <div>
+        <div style="margin: auto;width: ;">
+            <a style="margin: auto;display: block;text-align: center;max-width: 50%;margin-top: 10px;"
+               href="http://localhost:3000/index.html">See Final Version On Home Page</a>
+        </div>
+
+    </div>
+</section>
+
+
+<script type="text/javascript">
+    // var promise = Promise.resolve(ajaxPull());
+    //
+    // promise.then(function(val) {
+    //     console.log(val);
+    // });
+    function getShopID(url) {
+        $(".shop-id-holder").slideUp("slow")
+        const xhttp = new XMLHttpRequest();
+        var response = ''
+        // Define a callback function
+        xhttp.onload = function () {
+            //console.log(xhttp.responseText)
+            //var as = $(xhttp.responseText).find("a")
+            var res = xhttp.responseText;
+            if (res.indexOf('recipient_id=') != -1) {
+                var start = res.indexOf('recipient_id=') + 13
+                var shop_id = res.substring(start, res.indexOf('\"', start))
+                document.querySelector("body > section:nth-child(3) > div.shop-id-holder > div > h3").textContent = shop_id;
+            } else {
+                document.querySelector("body > section:nth-child(3) > div.shop-id-holder > div > h3").textContent = 'invalid name or url';
+            }
+
+
+        };
+        // Send a request
+        xhttp.open("GET", "/pull?url=" + url);
+        xhttp.send();
+
+    }
+
+
+</script>
+
+<!-- end feature section -->
+
+<!-- download section -->
+
+<!--<section class="download_section layout_padding-bottom">
+    <div class="container">
+        <div class="heading_container">
+            <h2>
+                Download Anytime, Anywhere
+            </h2>
+        </div>
+        <div class="layout_padding2-top">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="box">
+                        <div class="head-box">
+                            <div class="img-box">
+                                <img src="index_files/cloud-download.png" alt="">
+                            </div>
+                            <h6>
+                                Download The App
+                            </h6>
+                        </div>
+                        <div class="detail-box">
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                                do eiusmod tempor incididunt ut labore et dolore magna
+                                aliqua. Ut enim ad minim veniam
+                            </p>
+                        </div>
+                    </div>
+                    <div class="box">
+                        <div class="head-box">
+                            <div class="img-box">
+                                <img src="index_files/trophy_.png" alt="">
+                            </div>
+                            <h6>
+                                Easy to Customize
+                            </h6>
+                        </div>
+                        <div class="detail-box">
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                                do eiusmod tempor incididunt ut labore et dolore magna
+                                aliqua. Ut enim ad minim veniam
+                            </p>
+                        </div>
+                    </div>
+                    <div>
+                        <a href="" class="btn-1">
+                            Read More
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="main-img-box">
+                        <img src="index_files/download-img.png" alt="">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="box">
+                        <div class="head-box">
+                            <div class="img-box">
+                                <img src="index_files/playstore.png" alt="">
+                            </div>
+                            <h6>
+                                Connect Your Store
+                            </h6>
+                        </div>
+                        <div class="detail-box">
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                                do eiusmod tempor incididunt ut labore et dolore magna
+                                aliqua. Ut enim ad minim veniam
+                            </p>
+                        </div>
+                    </div>
+                    <div class="box">
+                        <div class="head-box">
+                            <div class="img-box">
+                                <img src="index_files/heart.png" alt="">
+                            </div>
+                            <h6>
+                                Enjoy Our App
+                            </h6>
+                        </div>
+                        <div class="detail-box">
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                                do eiusmod tempor incididunt ut labore et dolore magna
+                                aliqua. Ut enim ad minim veniam
+                            </p>
+                        </div>
+                    </div>
+                    <div>
+                        <a href="" class="btn-2">
+                            Download Now
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- end download section -->
+
+<!-- about section -->
+<!--<section class="about_section layout_padding">
+    <div class="container">
+        <div class="heading_container d-flex justify-content-lg-start">
+            <h2>
+                About Us
+            </h2>
+        </div>
+        <div class="layout_padding2-top">
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="detail-box b-1">
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                            sed do eiusmod tempor incididunt ut labore et dolore magna
+                        </p>
+                        <a href="">
+                            Read More
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="detail-box b-2">
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                            sed do eiusmod tempor incididunt ut labore et dolore magna
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- end about section -->
+
+<!-- subscribe section -->
+<!--<section class="subscribe_section layout_padding">
+    <div class="container">
+        <div class="heading_container">
+            <h2>
+                Subscribe For Updates
+            </h2>
+        </div>
+        <form action="" class="layout_padding2-top">
+            <input type="email" placeholder="Enter your email">
+            <button>
+                subscribe
+            </button>
+        </form>
+    </div>
+</section>
+
+<!-- end subscribe section -->
+
+<!-- client section -->
+<!--<section class="client_section layout_margin">
+    <div class="container">
+        <div class="heading_container">
+            <h2>
+                Check what people say About us!
+            </h2>
+        </div>
+        <div class="client_container layout_padding2-top">
+            <div class="client-id">
+                <div class="img-box">
+                    <img src="index_files/client.png" alt="">
+                </div>
+                <div class="name">
+                    <img src="index_files/quote.png" alt="">
+                    <h6>
+                        Sandy Delex
+                    </h6>
+                    <p>
+                        Reprehenderit
+                    </p>
+                </div>
+            </div>
+            <div class="client-detail">
+                <p>
+                    dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+                    veniam, quis nostrud esse cillum
+                </p>
+            </div>
+            <div class="d-flex justify-content-end">
+                <a href="">
+                    Read More
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- end client section -->
+
+<!-- contact section -->
+<!--<section class="contact_section layout_padding">
+    <div class="container">
+        <div class="d-flex ">
+            <h2>
+                Contact Us
+            </h2>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+
+                <form action="">
+                    <div class="contact_form-container">
+                        <div>
+                            <div>
+                                <input type="text" placeholder="Name">
+                            </div>
+                            <div>
+                                <input type="text" placeholder="Phone Number">
+                            </div>
+                            <div>
+                                <input type="email" placeholder="Email">
+                            </div>
+                            <div class="mt-5">
+                                <input type="text" placeholder="Message">
+                            </div>
+                            <div class="mt-5">
+                                <button type="submit">
+                                    send
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </form>
+            </div>
+            <div class="col-md-6">
+                <div class="contact_img-box">
+                    <img src="index_files/contact-img.png" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- end contact section -->
+<!-- info section -->
+<section class="info_section layout_padding-top">
+    <div class="info_logo-box">
+        <h2>
+            OD.io
+        </h2>
+    </div>
+    <div class="container layout_padding2" style="margin: auto;text-align: center">
+        <div class="row">
+            <div class="col-md-3" style="margin: auto">
+                <h5>
+                    About This Project
+                </h5>
+                <p>
+                    This project was created to show the capabilities of
+                    a backend scraping software to gain relevant keyword information for
+                    Etsy listings
+                </p>
+            </div>
+            <!--<div class="col-md-3">
+                <h5>
+                    Useful Link
+                </h5>
+                <ul>
+                    <li>
+                        <a href="">
+                            Video games
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            Remote control
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            3d controller
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-3">
+                <h5>
+                    Contact Us
+                </h5>
+                <p>
+                    dolor sit amet, consectetur magna aliqua. quisdotempor incididunt ut e
+                </p>
+            </div>
+            <div class="col-md-3">
+
+                <div class="subscribe_container">
+                    <h5>
+                        Newsletter
+                    </h5>
+                    <div class="form_container">
+                        <form action="">
+                            <input type="email" placeholder="Enter your email">
+                            <button type="submit">
+                                Subscribe
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="social_container">
+
+            <div class="social-box">
+                <a href="">
+                    <img src="index_files/fb.png" alt="">
+                </a>
+
+                <a href="">
+                    <img src="index_files/twitter.png" alt="">
+                </a>
+                <a href="">
+                    <img src="index_files/linkedin.png" alt="">
+                </a>
+                <a href="">
+                    <img src="index_files/instagram.png" alt="">
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- end info section -->
+            <!-- footer section -->
+            <section class="container-fluid footer_section">
+                <p>
+                    © 2022 Shane ODonnell
+                </p>
+            </section>
+            <!-- footer section -->
+
+            <script type="text/javascript" src="PrototypePage_files/jquery-3.4.1.min.js"></script>
+            <script type="text/javascript" src="PrototypePage_files/bootstrap.js"></script>
+
+            <script>
+                function openNav() {
+                    document.getElementById("myNav").classList.toggle("menu_width");
+                    document
+                        .querySelector(".custom_menu-btn")
+                        .classList.toggle("menu_btn-style");
+                }
+            </script>
+
+
+            <script>
+                (function () {
+                    var ws = new WebSocket('ws://' + window.location.host +
+                        '/jb-server-page?reloadMode=RELOAD_ON_SAVE&' +
+                        'referrer=' + encodeURIComponent(window.location.pathname));
+                    ws.onmessage = function (msg) {
+                        if (msg.data === 'reload') {
+                            window.location.reload();
+                        }
+                        if (msg.data.startsWith('update-css ')) {
+                            var messageId = msg.data.substring(11);
+                            var links = document.getElementsByTagName('link');
+                            for (var i = 0; i < links.length; i++) {
+                                var link = links[i];
+                                if (link.rel !== 'stylesheet') continue;
+                                var clonedLink = link.cloneNode(true);
+                                var newHref = link.href.replace(/(&|\?)jbUpdateLinksId=\d+/, "$1jbUpdateLinksId=" + messageId);
+                                if (newHref !== link.href) {
+                                    clonedLink.href = newHref;
+                                } else {
+                                    var indexOfQuest = newHref.indexOf('?');
+                                    if (indexOfQuest >= 0) {
+                                        // to support ?foo#hash
+                                        clonedLink.href = newHref.substring(0, indexOfQuest + 1) + 'jbUpdateLinksId=' + messageId + '&' +
+                                            newHref.substring(indexOfQuest + 1);
+                                    } else {
+                                        clonedLink.href += '?' + 'jbUpdateLinksId=' + messageId;
+                                    }
+                                }
+                                link.replaceWith(clonedLink);
+                            }
+                        }
+                    };
+                })();
+            </script>
+        </div>
+    </div>
+</section>
+<script>
+    (function () {
+        var ws = new WebSocket('ws://' + window.location.host +
+            '/jb-server-page?reloadMode=RELOAD_ON_SAVE&' +
+            'referrer=' + encodeURIComponent(window.location.pathname));
+        ws.onmessage = function (msg) {
+            if (msg.data === 'reload') {
+                window.location.reload();
+            }
+            if (msg.data.startsWith('update-css ')) {
+                var messageId = msg.data.substring(11);
+                var links = document.getElementsByTagName('link');
+                for (var i = 0; i < links.length; i++) {
+                    var link = links[i];
+                    if (link.rel !== 'stylesheet') continue;
+                    var clonedLink = link.cloneNode(true);
+                    var newHref = link.href.replace(/(&|\?)jbUpdateLinksId=\d+/, "$1jbUpdateLinksId=" + messageId);
+                    if (newHref !== link.href) {
+                        clonedLink.href = newHref;
+                    } else {
+                        var indexOfQuest = newHref.indexOf('?');
+                        if (indexOfQuest >= 0) {
+                            // to support ?foo#hash
+                            clonedLink.href = newHref.substring(0, indexOfQuest + 1) + 'jbUpdateLinksId=' + messageId + '&' +
+                                newHref.substring(indexOfQuest + 1);
+                        } else {
+                            clonedLink.href += '?' + 'jbUpdateLinksId=' + messageId;
+                        }
+                    }
+                    link.replaceWith(clonedLink);
+                }
+            }
+        };
+    })();
+</script>
+<script>
+    (function () {
+        var ws = new WebSocket('ws://' + window.location.host +
+            '/jb-server-page?reloadMode=RELOAD_ON_SAVE&' +
+            'referrer=' + encodeURIComponent(window.location.pathname));
+        ws.onmessage = function (msg) {
+            if (msg.data === 'reload') {
+                window.location.reload();
+            }
+            if (msg.data.startsWith('update-css ')) {
+                var messageId = msg.data.substring(11);
+                var links = document.getElementsByTagName('link');
+                for (var i = 0; i < links.length; i++) {
+                    var link = links[i];
+                    if (link.rel !== 'stylesheet') continue;
+                    var clonedLink = link.cloneNode(true);
+                    var newHref = link.href.replace(/(&|\?)jbUpdateLinksId=\d+/, "$1jbUpdateLinksId=" + messageId);
+                    if (newHref !== link.href) {
+                        clonedLink.href = newHref;
+                    } else {
+                        var indexOfQuest = newHref.indexOf('?');
+                        if (indexOfQuest >= 0) {
+                            // to support ?foo#hash
+                            clonedLink.href = newHref.substring(0, indexOfQuest + 1) + 'jbUpdateLinksId=' + messageId + '&' +
+                                newHref.substring(indexOfQuest + 1);
+                        } else {
+                            clonedLink.href += '?' + 'jbUpdateLinksId=' + messageId;
+                        }
+                    }
+                    link.replaceWith(clonedLink);
+                }
+            }
+        };
+    })();
+</script>
+<script>
+    (function () {
+        var ws = new WebSocket('ws://' + window.location.host +
+            '/jb-server-page?reloadMode=RELOAD_ON_SAVE&' +
+            'referrer=' + encodeURIComponent(window.location.pathname));
+        ws.onmessage = function (msg) {
+            if (msg.data === 'reload') {
+                window.location.reload();
+            }
+            if (msg.data.startsWith('update-css ')) {
+                var messageId = msg.data.substring(11);
+                var links = document.getElementsByTagName('link');
+                for (var i = 0; i < links.length; i++) {
+                    var link = links[i];
+                    if (link.rel !== 'stylesheet') continue;
+                    var clonedLink = link.cloneNode(true);
+                    var newHref = link.href.replace(/(&|\?)jbUpdateLinksId=\d+/, "$1jbUpdateLinksId=" + messageId);
+                    if (newHref !== link.href) {
+                        clonedLink.href = newHref;
+                    } else {
+                        var indexOfQuest = newHref.indexOf('?');
+                        if (indexOfQuest >= 0) {
+                            // to support ?foo#hash
+                            clonedLink.href = newHref.substring(0, indexOfQuest + 1) + 'jbUpdateLinksId=' + messageId + '&' +
+                                newHref.substring(indexOfQuest + 1);
+                        } else {
+                            clonedLink.href += '?' + 'jbUpdateLinksId=' + messageId;
+                        }
+                    }
+                    link.replaceWith(clonedLink);
+                }
+            }
+        };
+    })();
+</script>
+</body>
+</html>

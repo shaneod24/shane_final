@@ -2,9 +2,20 @@ var express = require('express');
 var router = express.Router();
 var request = require('request');
 const cheerio = require("cheerio");
+const fetch = require('node-fetch');
 
 
+router.get('/pull', async function (req, res, next) {
+  var responseurl = req.url
+  var url = responseurl.substring(responseurl.indexOf('url=') + 4, responseurl.length)
+  console.log(url)
+  const response = await fetch(url);
+  const body = await response.text();
+  res.send(body);
+
+});
 /* GET home page. */
+
 router.get('/', function (req, res, next) {
   res.render('public/index.html');
 });
@@ -106,5 +117,6 @@ router.get('/api', function (req, resx, next) {
 
 
 });
+
 
 module.exports = router;
